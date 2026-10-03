@@ -1,0 +1,266 @@
+==============================================================================
+1. DATA INSPECTION — field mapping
+==============================================================================
+pages parsed (content_wikitext folders)  : 35,118
+body-text mention rows (source,target,section): 489,162
+  source city             : content_wikitext/<slug>  -> pages.slug -> pages.title (pages_meta.fr_title_canon)
+  target/mentioned city   : mentions.target_title (wikilink target resolved through article titles + Wikipedia redirects)
+  number of citations     : mentions.n_links + mentions.n_text (link-anchored mentions; n_links alone kept as sensitivity)
+  latitude / longitude    : infobox 'latitude'/'longitude' of the article; fallback geo.api.gouv.fr commune centre
+  INSEE commune code      : infobox 'insee' -> validated against geo.api.gouv.fr (current communes) / INSEE COG 2025 (COMPARENT for former communes)
+  département             : geo.api.gouv.fr codeDepartement (+ names from /departements)
+  région                  : geo.api.gouv.fr codeRegion (+ names from /regions)
+  population              : geo.api.gouv.fr population (INSEE légale)
+  page/text identifiers   : pages.oldid = latest revision id used; pages_meta.wikidata_qid available
+
+Infobox types of parsed articles (top 8):
+  Infobox Commune de France                      34,933
+  Infobox Département de France                      93
+  Infobox Ancienne commune de France                 81
+  Infobox DROM-COM                                    6
+  Infobox Ancienne commune                            3
+                                                      1
+  Infobox Département de France/Bac à sable           1
+  -> non-commune articles excluded as nodes: 101
+
+Canonical ID = INSEE commune code (COG 2025). Identification method per article:
+  infobox_insee                             34,939
+  former_commune_cog_parent                     56
+  exact_name_match(no infobox code)             11
+  unresolved                                    10
+  rejected_name_match_far                        1
+  articles outside metropolitan France (overseas) dropped: 212
+  articles folded into an existing INSEE node (former communes): 59
+  coordinates from article infobox: 34,713; from official commune centre: 22
+  metropolitan city nodes (unique INSEE): 34,735 (official metropolitan communes: 34,746)
+
+==============================================================================
+2. DIRECTED WEIGHTED NETWORK
+==============================================================================
+mention rows: 489,162; with both ends = metropolitan city nodes: 387,724; self-links removed: 401
+share of mentions by section class: geo_admin=62.6%, lead=1.0%, narrative=36.3%
+top sections by mentions: geographie (230,442); histoire (125,720); urbanisme (36,643); culture locale et patrimoine (29,662); population et societe (24,007); politique et administration (20,417); toponymie (13,678); equipements et services publics (12,754); economie (8,217); lead (5,553); equipements et services (4,065); lieux et monuments (3,043)
+
+==============================================================================
+3. DESCRIPTIVE NETWORK STATISTICS (directed, all valid body-text edges)
+==============================================================================
+cities (nodes)                    : 34,735  (isolated, no body-text tie: 8)
+directed edges                    : 291,581
+undirected ties                   : 248,306  (reciprocated: 43,275)
+total citation count (mentions)   : 529,965   [links only: 394,043]
+density                           : 2.42e-04
+reciprocity (edge level)          : 0.297
+weighted reciprocity              : 0.252
+largest weakly connected comp.    : 34,727 nodes (100.0%)
+largest strongly connected comp.  : 28,468 nodes (82.0%)
+weighted degree (in+out) median / mean : 15 / 30.5
+in_strength  distribution: p10=0, p25=1, p50=5, p75=12, p90=26, p99=168, max=9,150, zero=4,665
+out_strength distribution: p10=1, p25=4, p50=9, p75=20, p90=34, p99=96, max=990, zero=163
+Gini in-strength: 0.757; Gini out-strength: 0.544
+top 15 by weighted in-degree: Paris (9,150); Lyon (3,440); Toulouse (3,318); Lille (2,979); Bordeaux (2,776); Orléans (2,524); Amiens (2,402); Arras (2,212); Poitiers (2,168); Strasbourg (2,003); Nantes (1,882); Blois (1,881); Pau (1,825); Grenoble (1,722); Rennes (1,613)
+top 15 by weighted out-degree: Lumeau (990); Neublans-Abergement (341); Breuillet (323); Genlis (305); Étaules (295); Saint-Georges-de-Didonne (276); Fontenay-Trésigny (274); Jaligny-sur-Besbre (262); L'Isle-Adam (245); Les Pilles (241); Anglet (221); Arvert (220); Grenoble (220); Masléon (214); Dampierre-sur-le-Doubs (213)
+
+Paris dominance check
+  Paris — as source 0.02%, as target 1.73%, either endpoint 1.74% of citations (0.98% of directed edges); Paris in-degree = 2,797 citing cities (8.1% of all cities)
+  10 largest cities by population (Paris, Marseille, Lyon, Toulouse, Nice, Nantes, Montpellier, Strasbourg, Bordeaux, Lille):
+     as source 0.25%, as target 5.33%, either endpoint 5.51% (3.34% of edges)
+  Paris rank by in-strength: 1; share of Paris among top-1 % in-strength: 33.1% of citations go to top-1 % cities
+
+==============================================================================
+4. COMMUNITY DETECTION — Leiden (RB-configuration / modularity), 5 seeds per setting, undirected projection w*_ij = w_ij + w_ji on the largest connected component (34,727 nodes, 248,306 ties)
+==============================================================================
+  raw                γ=0.25  k=   9 (≥1%:  9)  Q=0.811  stability=0.665  largest=23.6%  [16s]
+  raw                γ=0.5   k=  15 (≥1%: 15)  Q=0.851  stability=0.740  largest=11.0%  [12s]
+  raw                γ=0.75  k=  17 (≥1%: 17)  Q=0.857  stability=0.778  largest=11.1%  [15s]
+  raw                γ=1.0   k=  24 (≥1%: 24)  Q=0.861  stability=0.742  largest=7.8%  [13s]
+  raw                γ=1.25  k=  27 (≥1%: 26)  Q=0.860  stability=0.755  largest=7.4%  [15s]
+  raw                γ=1.5   k=  31 (≥1%: 30)  Q=0.858  stability=0.775  largest=7.2%  [16s]
+  raw                γ=2.0   k=  40 (≥1%: 38)  Q=0.851  stability=0.728  largest=7.3%  [20s]
+  raw                γ=3.0   k=  51 (≥1%: 47)  Q=0.841  stability=0.754  largest=4.3%  [23s]
+  log                γ=0.25  k=   8 (≥1%:  8)  Q=0.777  stability=0.690  largest=22.6%  [20s]
+  log                γ=0.5   k=  14 (≥1%: 14)  Q=0.832  stability=0.735  largest=12.5%  [15s]
+  log                γ=0.75  k=  16 (≥1%: 16)  Q=0.839  stability=0.802  largest=11.0%  [11s]
+  log                γ=1.0   k=  21 (≥1%: 21)  Q=0.841  stability=0.699  largest=8.2%  [12s]
+  log                γ=1.25  k=  24 (≥1%: 24)  Q=0.840  stability=0.753  largest=7.5%  [14s]
+  log                γ=1.5   k=  28 (≥1%: 28)  Q=0.838  stability=0.730  largest=7.0%  [16s]
+  log                γ=2.0   k=  35 (≥1%: 34)  Q=0.834  stability=0.738  largest=5.9%  [19s]
+  log                γ=3.0   k=  47 (≥1%: 44)  Q=0.819  stability=0.741  largest=3.8%  [18s]
+  source_normalized  γ=0.25  k=  10 (≥1%: 10)  Q=0.842  stability=0.684  largest=13.2%  [10s]
+  source_normalized  γ=0.5   k=  17 (≥1%: 17)  Q=0.871  stability=0.731  largest=9.1%  [12s]
+  source_normalized  γ=0.75  k=  27 (≥1%: 25)  Q=0.880  stability=0.720  largest=7.3%  [17s]
+  source_normalized  γ=1.0   k=  30 (≥1%: 30)  Q=0.880  stability=0.718  largest=5.9%  [27s]
+  source_normalized  γ=1.25  k=  36 (≥1%: 35)  Q=0.880  stability=0.766  largest=6.2%  [30s]
+  source_normalized  γ=1.5   k=  40 (≥1%: 38)  Q=0.879  stability=0.752  largest=4.4%  [36s]
+  source_normalized  γ=2.0   k=  46 (≥1%: 43)  Q=0.877  stability=0.761  largest=4.9%  [31s]
+  source_normalized  γ=3.0   k=  66 (≥1%: 54)  Q=0.865  stability=0.740  largest=3.3%  [33s]
+  association        γ=0.25  k=  28 (≥1%: 18)  Q=0.895  stability=0.684  largest=12.6%  [32s]
+  association        γ=0.5   k=  41 (≥1%: 27)  Q=0.912  stability=0.660  largest=9.9%  [31s]
+  association        γ=0.75  k=  54 (≥1%: 36)  Q=0.915  stability=0.673  largest=9.6%  [27s]
+  association        γ=1.0   k=  67 (≥1%: 43)  Q=0.917  stability=0.673  largest=4.8%  [23s]
+  association        γ=1.25  k=  77 (≥1%: 45)  Q=0.917  stability=0.667  largest=4.3%  [25s]
+  association        γ=1.5   k=  82 (≥1%: 44)  Q=0.916  stability=0.684  largest=4.3%  [23s]
+  association        γ=2.0   k= 100 (≥1%: 46)  Q=0.914  stability=0.686  largest=3.9%  [29s]
+  association        γ=3.0   k= 139 (≥1%: 38)  Q=0.908  stability=0.697  largest=3.7%  [40s]
+
+PRIMARY CLUSTERING (rule fixed a priori): weighting = source_normalized; resolution = most seed-stable γ in [0.5, 0.75, 1.0, 1.25, 1.5, 2.0] (ties within 0.02 ARI broken by modularity) -> γ = 1.25
+
+Agreement between weightings (ARI between partitions at the selected γ, and narrative-only network):
+  source_normalized vs raw         : ARI = 0.657
+  source_normalized vs log         : ARI = 0.654
+  source_normalized vs association : ARI = 0.551
+  narrative-only network (100,536 ties, 28,812 cities): ARI with primary = 0.556
+
+Primary communities (size, hub, top-5 cities by in-strength):
+  C0   n= 2155  Amiens                   Amiens, Beauvais, Abbeville, Compiègne, Saint-Quentin
+  C1   n= 1756  Paris                    Paris, Versailles, Melun, Meaux, Chartres
+  C2   n= 1660  Bordeaux                 Bordeaux, Poitiers, Angoulême, Royan, Saintes
+  C3   n= 1572  Lille                    Lille, Arras, Boulogne-sur-Mer, Valenciennes, Douai
+  C4   n= 1366  Besançon                 Besançon, Belfort, Vesoul, Montbéliard, Dole
+  C5   n= 1363  Rouen                    Rouen, Dieppe, Le Havre, Évreux, Lisieux
+  C6   n= 1351  Toulouse                 Toulouse, Foix, Carcassonne, Pamiers, Castres
+  C7   n= 1280  Lyon                     Lyon, Grenoble, Saint-Étienne, Roanne, Bourgoin-Jallieu
+  C8   n= 1220  Rennes                   Rennes, Brest, Quimper, Vannes, Lorient
+  C9   n= 1165  Tarbes                   Tarbes, Auch, Lourdes, Lannemezan, Bagnères-de-Luchon
+  C10  n= 1132  Blois                    Blois, Tours, Châteauroux, Bourges, Loches
+  C11  n= 1115  Caen                     Caen, Coutances, Bayeux, Saint-Lô, Argentan
+  C12  n= 1087  Troyes                   Troyes, Sens, Langres, Chaumont, Châtillon-sur-Seine
+  C13  n= 1060  Marseille                Marseille, Avignon, Nice, Sisteron, Aix-en-Provence
+  C14  n= 1033  Strasbourg               Strasbourg, Mulhouse, Colmar, Bitche, Sélestat
+  C15  n=  994  Reims                    Reims, Châlons-en-Champagne, Épernay, Vitry-le-François, Sainte-Menehould
+  C16  n=  938  Nancy                    Nancy, Mirecourt, Épinal, Toul, Neufchâteau
+  C17  n=  923  Albi                     Albi, Montauban, Rodez, Cahors, Millau
+  C18  n=  914  Dijon                    Dijon, Autun, Chalon-sur-Saône, Beaune, Cluny
+  C19  n=  859  Pau                      Pau, Bayonne, Oloron-Sainte-Marie, Dax, Mont-de-Marsan
+  C20  n=  856  Clermont-Ferrand         Clermont-Ferrand, Vichy, Riom, Montluçon, Moulins
+  C21  n=  786  Périgueux                Périgueux, Bergerac, Lamothe-Montravel, Saint-Pierre-de-Frugie, Agen
+  C22  n=  780  Metz                     Metz, Thionville, Amnéville, Forbach, Saint-Avold
+  C23  n=  748  Mâcon                    Mâcon, Bourg-en-Bresse, Lugny, Lons-le-Saunier, Tournus
+  C24  n=  701  Angers                   Angers, Le Mans, Laval, Alençon, La Flèche
+  C25  n=  681  Nantes                   Nantes, Niort, Saint-Nazaire, Châteaubriant, Guérande
+  C26  n=  677  Verdun                   Verdun, Charleville-Mézières, Le Châtelet-sur-Meuse, Saint-Mihiel, Sedan
+  C27  n=  658  Montpellier              Montpellier, Nîmes, Alès, Béziers, Uzès
+  C28  n=  641  Limoges                  Limoges, Guéret, Brive-la-Gaillarde, Tulle, Aubusson
+  C29  n=  631  Le Puy-en-Velay          Le Puy-en-Velay, Aurillac, Mende, Brioude, Saint-Flour
+
+==============================================================================
+5. DO CITATION COMMUNITIES MAP ADMINISTRATIVE TERRITORIES?  (computed after selection)
+==============================================================================
+Reference (administrative levels compared with each other, same cities):
+  départements vs régions 2016   : ARI=0.206, NMI=0.698
+  départements vs pre-2016 régions: ARI=0.382, NMI=0.808
+  pre-2016 régions vs régions 2016: ARI=0.653, NMI=0.883
+  number of units: 96 départements, 22 pre-2016 régions, 13 régions
+Primary solution: 36 communities
+  vs région (2016)     : ARI=0.389  NMI=0.723  homogeneity=0.892  completeness=0.608  V=0.723
+  vs région (pre-2016) : ARI=0.575  NMI=0.798  homogeneity=0.863  completeness=0.743  V=0.798
+  vs département       : ARI=0.443  NMI=0.790  homogeneity=0.706  completeness=0.896  V=0.790
+  (homogeneity = each community lies within one unit; completeness = each unit lies within one community)
+Share of each région's cities in its main community: median 51.4%, min 20.1% (Grand Est), max 99.4%
+Share of each département's cities in its main community: median 95.2%; départements with ≥90% in one community: 63/96
+Share of each pre-2016 région's cities in its main community: median 76.8%, min 37.0% (Midi-Pyrénées), max 99.4%
+Communities whose cities are ≥90% in one région: 27/36; in one pre-2016 région: 21/36; in one département: 2/36
+Median number of communities touching a département: 4; median départements per community: 9
+Narrative-only network (330 communities): pre-2016 régions ARI=0.498 NMI=0.691
+Narrative-only network vs régions ARI=0.325 NMI=0.619; vs départements ARI=0.386 NMI=0.696
+
+All solutions (weighting × γ):
+        weighting  resolution  n_communities  n_communities_ge1pct  modularity  seed_stability_ARI  ARI_region  NMI_region  ARI_old_region  NMI_old_region  ARI_department  NMI_department
+              raw       0.250              9                     9       0.811               0.665       0.529       0.705           0.361           0.670           0.123           0.577
+              raw       0.500             15                    15       0.851               0.740       0.639       0.779           0.532           0.758           0.235           0.681
+              raw       0.750             17                    17       0.857               0.778       0.579       0.759           0.534           0.768           0.262           0.704
+              raw       1.000             24                    24       0.861               0.742       0.492       0.748           0.643           0.814           0.340           0.746
+              raw       1.250             27                    26       0.860               0.755       0.487       0.751           0.590           0.798           0.364           0.754
+              raw       1.500             31                    30       0.858               0.775       0.426       0.730           0.564           0.795           0.397           0.776
+              raw       2.000             40                    38       0.851               0.728       0.369       0.711           0.522           0.788           0.433           0.791
+              raw       3.000             51                    47       0.841               0.754       0.298       0.698           0.463           0.778           0.525           0.817
+              log       0.250              8                     8       0.777               0.690       0.547       0.716           0.339           0.648           0.111           0.553
+              log       0.500             14                    14       0.832               0.735       0.692       0.792           0.535           0.754           0.220           0.670
+              log       0.750             16                    16       0.839               0.802       0.605       0.773           0.576           0.782           0.253           0.694
+              log       1.000             21                    21       0.841               0.699       0.502       0.735           0.598           0.778           0.319           0.732
+              log       1.250             24                    24       0.840               0.753       0.499       0.748           0.613           0.795           0.333           0.741
+              log       1.500             28                    28       0.838               0.730       0.427       0.716           0.560           0.776           0.380           0.764
+              log       2.000             35                    34       0.834               0.738       0.382       0.709           0.590           0.796           0.434           0.784
+              log       3.000             47                    44       0.819               0.741       0.309       0.700           0.487           0.782           0.510           0.808
+source_normalized       0.250             10                    10       0.842               0.684       0.699       0.781           0.490           0.723           0.176           0.624
+source_normalized       0.500             17                    17       0.871               0.731       0.558       0.746           0.543           0.759           0.273           0.708
+source_normalized       0.750             27                    25       0.880               0.720       0.467       0.735           0.589           0.790           0.355           0.754
+source_normalized       1.000             30                    30       0.880               0.718       0.422       0.724           0.576           0.787           0.397           0.770
+source_normalized       1.250             36                    35       0.880               0.766       0.389       0.723           0.575           0.798           0.443           0.790
+source_normalized       1.500             40                    38       0.879               0.752       0.355       0.710           0.560           0.798           0.478           0.798
+source_normalized       2.000             46                    43       0.877               0.761       0.332       0.702           0.507           0.783           0.492           0.804
+source_normalized       3.000             66                    54       0.865               0.740       0.244       0.670           0.408           0.757           0.548           0.823
+      association       0.250             28                    18       0.895               0.684       0.481       0.684           0.527           0.728           0.245           0.669
+      association       0.500             41                    27       0.912               0.660       0.408       0.670           0.469           0.724           0.322           0.721
+      association       0.750             54                    36       0.915               0.673       0.375       0.649           0.439           0.710           0.357           0.737
+      association       1.000             67                    43       0.917               0.673       0.280       0.640           0.435           0.719           0.428           0.756
+      association       1.250             77                    45       0.917               0.667       0.262       0.637           0.409           0.716           0.430           0.758
+      association       1.500             82                    44       0.916               0.684       0.242       0.626           0.392           0.709           0.449           0.768
+      association       2.000            100                    46       0.914               0.686       0.206       0.622           0.345           0.703           0.464           0.773
+      association       3.000            139                    38       0.908               0.697       0.162       0.602           0.281           0.686           0.467           0.778
+
+Per-community administrative profile (primary):
+  C0   Amiens                 n= 2155  région: Hauts-de-France               93.0% (7 rég.)  old: Picardie              92.5%  dépt: 80 Somme                    34.1% (13 dép.)
+  C1   Paris                  n= 1756  région: Île-de-France                 69.8% (9 rég.)  old: Île-de-France         69.8%  dépt: 77 Seine-et-Marne           27.0% (24 dép.)
+  C2   Bordeaux               n= 1660  région: Nouvelle-Aquitaine            99.1% (4 rég.)  old: Poitou-Charentes      66.6%  dépt: 33 Gironde                  30.6% (13 dép.)
+  C3   Lille                  n= 1572  région: Hauts-de-France               99.8% (3 rég.)  old: Nord-Pas-de-Calais    96.8%  dépt: 62 Pas-de-Calais            55.8% (6 dép.)
+  C4   Besançon               n= 1366  région: Bourgogne-Franche-Comté       98.5% (4 rég.)  old: Franche-Comté         96.9%  dépt: 25 Doubs                    40.8% (9 dép.)
+  C5   Rouen                  n= 1363  région: Normandie                     99.6% (5 rég.)  old: Haute-Normandie       85.5%  dépt: 76 Seine-Maritime           48.3% (9 dép.)
+  C6   Toulouse               n= 1351  région: Occitanie                     99.9% (2 rég.)  old: Midi-Pyrénées         66.8%  dépt: 11 Aude                     30.7% (11 dép.)
+  C7   Lyon                   n= 1280  région: Auvergne-Rhône-Alpes          91.8% (4 rég.)  old: Rhône-Alpes           89.8%  dépt: 38 Isère                    38.4% (14 dép.)
+  C8   Rennes                 n= 1220  région: Bretagne                      97.8% (5 rég.)  old: Bretagne              97.8%  dépt: 22 Côtes-d'Armor            28.2% (10 dép.)
+  C9   Tarbes                 n= 1165  région: Occitanie                     93.6% (2 rég.)  old: Midi-Pyrénées         93.6%  dépt: 65 Hautes-Pyrénées          39.7% (6 dép.)
+  C10  Blois                  n= 1132  région: Centre-Val de Loire           89.8% (6 rég.)  old: Centre                89.8%  dépt: 37 Indre-et-Loire           23.8% (17 dép.)
+  C11  Caen                   n= 1115  région: Normandie                     92.2% (4 rég.)  old: Basse-Normandie       91.4%  dépt: 50 Manche                   39.3% (9 dép.)
+  C12  Troyes                 n= 1087  région: Grand Est                     66.4% (6 rég.)  old: Champagne-Ardenne     66.3%  dépt: 10 Aube                     39.0% (11 dép.)
+  C13  Marseille              n= 1060  région: Provence-Alpes-Côte d'Azur    88.7% (9 rég.)  old: Provence-Alpes-Côte d'Azur  88.7%  dépt: 04 Alpes-de-Haute-Provence  18.7% (19 dép.)
+  C14  Strasbourg             n= 1033  région: Grand Est                     99.7% (2 rég.)  old: Alsace                83.5%  dépt: 67 Bas-Rhin                 49.5% (7 dép.)
+  C15  Reims                  n=  994  région: Grand Est                     85.0% (6 rég.)  old: Champagne-Ardenne     74.1%  dépt: 51 Marne                    58.2% (14 dép.)
+  C16  Nancy                  n=  938  région: Grand Est                     98.8% (3 rég.)  old: Lorraine              95.8%  dépt: 88 Vosges                   52.7% (8 dép.)
+  C17  Albi                   n=  923  région: Occitanie                     95.0% (4 rég.)  old: Midi-Pyrénées         92.0%  dépt: 46 Lot                      32.9% (13 dép.)
+  C18  Dijon                  n=  914  région: Bourgogne-Franche-Comté       99.5% (4 rég.)  old: Bourgogne             97.4%  dépt: 21 Côte-d'Or                54.8% (10 dép.)
+  C19  Pau                    n=  859  région: Nouvelle-Aquitaine            96.5% (3 rég.)  old: Aquitaine             96.5%  dépt: 64 Pyrénées-Atlantiques     63.3% (5 dép.)
+  C20  Clermont-Ferrand       n=  856  région: Auvergne-Rhône-Alpes          92.5% (4 rég.)  old: Auvergne              90.4%  dépt: 63 Puy-de-Dôme              51.4% (10 dép.)
+  C21  Périgueux              n=  786  région: Nouvelle-Aquitaine            99.0% (2 rég.)  old: Aquitaine             98.3%  dépt: 24 Dordogne                 62.8% (8 dép.)
+  C22  Metz                   n=  780  région: Grand Est                    100.0% (1 rég.)  old: Lorraine              99.9%  dépt: 57 Moselle                  71.7% (4 dép.)
+  C23  Mâcon                  n=  748  région: Bourgogne-Franche-Comté       57.8% (2 rég.)  old: Rhône-Alpes           42.2%  dépt: 39 Jura                     40.4% (9 dép.)
+  C24  Angers                 n=  701  région: Pays de la Loire              81.0% (7 rég.)  old: Pays de la Loire      81.0%  dépt: 72 Sarthe                   47.4% (17 dép.)
+  C25  Nantes                 n=  681  région: Pays de la Loire              69.3% (5 rég.)  old: Pays de la Loire      69.3%  dépt: 85 Vendée                   35.1% (9 dép.)
+  C26  Verdun                 n=  677  région: Grand Est                     99.9% (2 rég.)  old: Lorraine              53.3%  dépt: 08 Ardennes                 45.6% (5 dép.)
+  C27  Montpellier            n=  658  région: Occitanie                     98.0% (5 rég.)  old: Languedoc-Roussillon  97.7%  dépt: 30 Gard                     48.2% (8 dép.)
+  C28  Limoges                n=  641  région: Nouvelle-Aquitaine            98.8% (3 rég.)  old: Limousin              98.1%  dépt: 23 Creuse                   37.6% (9 dép.)
+  C29  Le Puy-en-Velay        n=  631  région: Auvergne-Rhône-Alpes          72.3% (3 rég.)  old: Auvergne              70.8%  dépt: 43 Haute-Loire              38.8% (11 dép.)
+
+==============================================================================
+6. PERMUTATION TESTS (5,000 label permutations; 1,000 spatial 'spin' rotations)
+==============================================================================
+  region     ARI: observed=0.389 | label_permutation null mean=-0.000 (95th pct 0.000, max 0.000) -> z=4710.5, p=0.0002
+  region     ARI: observed=0.389 | spatial_spin      null mean=0.347 (95th pct 0.404, max 0.440) -> z=1.4, p=0.1019
+  region     NMI: observed=0.723 | label_permutation null mean=0.002 (95th pct 0.002, max 0.003) -> z=5101.3, p=0.0002
+  region     NMI: observed=0.723 | spatial_spin      null mean=0.645 (95th pct 0.665, max 0.723) -> z=5.8, p=0.0010
+  old_region ARI: observed=0.575 | label_permutation null mean=0.000 (95th pct 0.000, max 0.000) -> z=8162.3, p=0.0002
+  old_region ARI: observed=0.575 | spatial_spin      null mean=0.416 (95th pct 0.463, max 0.575) -> z=5.0, p=0.0010
+  old_region NMI: observed=0.798 | label_permutation null mean=0.003 (95th pct 0.004, max 0.004) -> z=4610.0, p=0.0002
+  old_region NMI: observed=0.798 | spatial_spin      null mean=0.694 (95th pct 0.713, max 0.798) -> z=6.3, p=0.0010
+  department ARI: observed=0.443 | label_permutation null mean=-0.000 (95th pct 0.000, max 0.000) -> z=9361.6, p=0.0002
+  department ARI: observed=0.443 | spatial_spin      null mean=0.292 (95th pct 0.329, max 0.443) -> z=5.7, p=0.0010
+  department NMI: observed=0.790 | label_permutation null mean=0.012 (95th pct 0.013, max 0.014) -> z=2566.3, p=0.0002
+  department NMI: observed=0.790 | spatial_spin      null mean=0.704 (95th pct 0.719, max 0.790) -> z=7.1, p=0.0010
+  NOTE: label permutation destroys spatial autocorrelation and is therefore anti-conservative;
+  the spin null keeps communities spatially compact and asks whether they line up with the *actual*
+  administrative boundaries better than an equally compact but arbitrarily placed partition.
+
+==============================================================================
+7. SPATIAL COHERENCE
+==============================================================================
+random city pairs: mean 403 km (median 394)
+same-community pairs: mean 74 km (median 66); different-community pairs: mean 415 km (median 403)
+major communities (≥1% of cities, n=35): median radius 47 km; median share in main contiguous pocket 99.4%; median pockets with ≥5 cities 1
+citation edges: mean length 39 km (median 12), citation-weighted mean 31 km; random pairs mean 403 km (median 393)
+  84.2% of edges and 87.8% of citations link cities < 50 km apart (random pairs: 1.58%)
+P(directed tie) by distance: 0-5 km: 2.9e-01; 5-10 km: 1.1e-01; 10-20 km: 2.6e-02; 20-35 km: 5.3e-03; 35-50 km: 1.9e-03; 50-75 km: 7.0e-04; 75-100 km: 2.8e-04; 100-150 km: 1.1e-04; 150-200 km: 4.7e-05; 200-300 km: 2.2e-05; 300-400 km: 1.3e-05; 400-500 km: 1.1e-05; 500-700 km: 8.7e-06; 700-1000 km: 7.1e-06; 1000-1300 km: 3.9e-06
+  within-source OLS  log(1+w) ~ log d + log pop_target: β_logd = -0.199 (SE 0.0003), β_logpop = 0.079 (SE 0.0003); n = 637,205, clustered by source
+  within-source OLS  tie (LPM) ~ log d + log pop_target: β_logd = -0.210 (SE 0.0002), β_logpop = 0.062 (SE 0.0002); n = 637,205, clustered by source
+  intensive margin (existing ties only): β_logd = -0.196 (SE 0.0004)
+visual threshold (LinkedIn map): ≥3 mentions -> 45,536 directed ties (15.6% of ties in the LCC); analysis uses all ties
+
+done in 1030s

@@ -1,0 +1,26 @@
+﻿# Scratch caches, logs and large regenerated outputs stay out of Git.
+/cache/*
+!/cache/geo_*.json
+!/cache/cog_communes_2025.csv
+!/cache/v_*_2025.csv
+!/cache/wiki_redirects.csv
+!/cache/pages.parquet
+!/cache/mentions.parquet
+!/cache/*.geojson
+/output/*
+!/output/*.csv
+!/output/network_summary.txt
+/report/maps/*.svg
+/report/*build.log
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
+.venv/
+venv/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+layer_a,layer_b,common_clustered_nodes,ari
+all,history,23002,0.5102317753069632
+all,culture,15090,0.3894300268558662
+all,geography,34695,0.7212444005036338
+all,administration,7738,0.3140736395608453
+history,culture,12316,0.4181587062849288
+history,geography,22982,0.5307030797224548
+history,administration,5807,0.3080441129386799
+culture,geography,15081,0.4032612119427126
+culture,administration,4381,0.30566870426113196
+geography,administration,7734,0.31907740363429427

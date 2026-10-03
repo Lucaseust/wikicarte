@@ -1,0 +1,2271 @@
+{
+ "S": {
+  "n_cities": 34735,
+  "n_edges": 291581,
+  "W": 529965,
+  "n_links": 394043,
+  "n_text": 135922,
+  "share_links": 0.7435264592944817,
+  "cited_by_any": 30070,
+  "cites_any": 34572,
+  "median_out_degree": 6.0,
+  "median_in_degree": 3.0,
+  "mean_out_degree": 8.394443644738736,
+  "pct_weight_1": 0.6901992928208628,
+  "max_weight": 270,
+  "rho_out_body": 0.7625849726104116,
+  "rho_out_pop": 0.33051779244180524,
+  "rho_body_pop": 0.40292763880408383,
+  "median_per10k": 8.73906496767279,
+  "median_body_chars": 10645.0,
+  "out_elast_body": 1.2741510000063847,
+  "out_elast_pop": -0.006157665804489849,
+  "out_r2": 0.6076466946859665,
+  "out_r2_body_only": 0.6075898603347021,
+  "n_never_cited": 4665,
+  "pop_median_never_cited": 235.0,
+  "pop_median_cited": 517.0,
+  "share_top1pct_in": 0.3307010840338513,
+  "share_top10_in": 0.062215429320804205,
+  "rho_in_pop": 0.4062754857367665,
+  "in_elast_pop": 0.4141118923405309,
+  "in_r2_pop": 0.22521560684663144,
+  "seat_effects": {
+   "Sub-prefecture": {
+    "beta": 2.280759618508661,
+    "mult": 9.78410977830702,
+    "se": 0.05773992687935809
+   },
+   "Prefecture": {
+    "beta": 2.8195418751713954,
+    "mult": 16.769166540581296,
+    "se": 0.08237424609207243
+   },
+   "Regional capital": {
+    "beta": 3.480476307752836,
+    "mult": 32.47518657578167,
+    "se": 0.1640540621079614
+   }
+  },
+  "in_r2_pop_seat": 0.2613871432409993,
+  "share_up": 0.7140075287990716,
+  "share_up_10x": 0.31396790354079984,
+  "share_down_10x": 0.03582123347768249,
+  "reciprocity": 0.2968300403661418,
+  "recip_10x": 0.08729271473821502,
+  "dist_w_median": 9.752637048223402,
+  "dist_w_p90": 60.24280600904454,
+  "share_w_lt10": 0.5083165869444208,
+  "share_w_lt25": 0.7625107318407819,
+  "share_w_gt200": 0.030430311435660846,
+  "n_cite_paris": 2797,
+  "pct_cite_paris": 0.08052396718007773,
+  "share_intra_community": 0.8897266800637778,
+  "n_communities": 36,
+  "hub_share_median": 0.09190532285545497,
+  "hub_is_largest": 25,
+  "share_longrange_top10": 0.33264771877337324,
+  "n_template_stars": 53,
+  "template_star_ties": 6796,
+  "template_star_share_ties": 0.023307417149951472,
+  "seat_geo_share_median": 0.3684467304750324,
+  "ordinary_geo_share_median": 0.5,
+  "gamma": 1.25,
+  "admin": {
+   "ARI_region": 0.389,
+   "NMI_region": 0.723,
+   "ARI_old_region": 0.5753,
+   "NMI_old_region": 0.7983,
+   "ARI_department": 0.4434,
+   "NMI_department": 0.7898
+  }
+ },
+ "T": {
+  "top_citers": [
+   {
+    "city": "Lumeau",
+    "department_name": "Eure-et-Loir",
+    "out_strength": 990,
+    "out_degree": 121,
+    "body_chars": 264238,
+    "population": 138.0
+   },
+   {
+    "city": "Neublans-Abergement",
+    "department_name": "Jura",
+    "out_strength": 341,
+    "out_degree": 96,
+    "body_chars": 52815,
+    "population": 536.0
+   },
+   {
+    "city": "Breuillet",
+    "department_name": "Charente-Maritime",
+    "out_strength": 323,
+    "out_degree": 39,
+    "body_chars": 121965,
+    "population": 3058.0
+   },
+   {
+    "city": "Genlis",
+    "department_name": "Côte-d'Or",
+    "out_strength": 305,
+    "out_degree": 80,
+    "body_chars": 130941,
+    "population": 5093.0
+   },
+   {
+    "city": "Étaules",
+    "department_name": "Charente-Maritime",
+    "out_strength": 295,
+    "out_degree": 45,
+    "body_chars": 115391,
+    "population": 2857.0
+   },
+   {
+    "city": "Saint-Georges-de-Didonne",
+    "department_name": "Charente-Maritime",
+    "out_strength": 276,
+    "out_degree": 66,
+    "body_chars": 132198,
+    "population": 5092.0
+   },
+   {
+    "city": "Fontenay-Trésigny",
+    "department_name": "Seine-et-Marne",
+    "out_strength": 274,
+    "out_degree": 76,
+    "body_chars": 148160,
+    "population": 5994.0
+   },
+   {
+    "city": "Jaligny-sur-Besbre",
+    "department_name": "Allier",
+    "out_strength": 262,
+    "out_degree": 103,
+    "body_chars": 160389,
+    "population": 559.0
+   },
+   {
+    "city": "L'Isle-Adam",
+    "department_name": "Val-d'Oise",
+    "out_strength": 245,
+    "out_degree": 71,
+    "body_chars": 124591,
+    "population": 12493.0
+   },
+   {
+    "city": "Les Pilles",
+    "department_name": "Drôme",
+    "out_strength": 241,
+    "out_degree": 69,
+    "body_chars": 97908,
+    "population": 217.0
+   }
+  ],
+  "out_by_class": [
+   {
+    "size_class": "<200",
+    "out_median": 6.0,
+    "body_median": 8482.0,
+    "outdeg_median": 5.0,
+    "n": 8799
+   },
+   {
+    "size_class": "200–500",
+    "out_median": 7.0,
+    "body_median": 9351.0,
+    "outdeg_median": 5.0,
+    "n": 9449
+   },
+   {
+    "size_class": "500–2k",
+    "out_median": 10.0,
+    "body_median": 11238.0,
+    "outdeg_median": 7.0,
+    "n": 11090
+   },
+   {
+    "size_class": "2k–10k",
+    "out_median": 18.0,
+    "body_median": 16916.0,
+    "outdeg_median": 10.0,
+    "n": 4409
+   },
+   {
+    "size_class": "10k–50k",
+    "out_median": 37.0,
+    "body_median": 33860.0,
+    "outdeg_median": 15.0,
+    "n": 865
+   },
+   {
+    "size_class": "50k–200k",
+    "out_median": 71.0,
+    "body_median": 83430.0,
+    "outdeg_median": 26.5,
+    "n": 112
+   },
+   {
+    "size_class": "200k+",
+    "out_median": 140.0,
+    "body_median": 181804.0,
+    "outdeg_median": 53.0,
+    "n": 11
+   }
+  ],
+  "seat": [
+   {
+    "seat": "Ordinary commune",
+    "n": 34415,
+    "in_median": 5.0,
+    "in_total": 377886,
+    "pop_median": 449.0,
+    "share_of_citations": 0.713039540347004,
+    "share_of_cities": 0.9907873902403915
+   },
+   {
+    "seat": "Prefecture",
+    "n": 83,
+    "in_median": 599.0,
+    "in_total": 57293,
+    "pop_median": 47219.0,
+    "share_of_citations": 0.10810713915069863,
+    "share_of_cities": 0.002389520656398445
+   },
+   {
+    "seat": "Regional capital",
+    "n": 13,
+    "in_median": 2003.0,
+    "in_total": 33440,
+    "pop_median": 267991.0,
+    "share_of_citations": 0.06309850650514656,
+    "share_of_cities": 0.0003742622714840939
+   },
+   {
+    "seat": "Sub-prefecture",
+    "n": 224,
+    "in_median": 196.5,
+    "in_total": 61346,
+    "pop_median": 14511.0,
+    "share_of_citations": 0.11575481399715075,
+    "share_of_cities": 0.006448826831725925
+   }
+  ],
+  "over_cited": [
+   {
+    "city": "Saint-Pierre-de-Frugie",
+    "department_name": "Dordogne",
+    "population": 520.0,
+    "in_strength": 504,
+    "expected": 5.000314217492484,
+    "ratio": 84.16225912432937,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Licques",
+    "department_name": "Pas-de-Calais",
+    "population": 1679.0,
+    "in_strength": 641,
+    "expected": 8.74937007537856,
+    "ratio": 65.85040828651401,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Arras",
+    "department_name": "Pas-de-Calais",
+    "population": 42875.0,
+    "in_strength": 2212,
+    "expected": 36.29885745403479,
+    "ratio": 59.33157611401873,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Lamothe-Montravel",
+    "department_name": "Dordogne",
+    "population": 1443.0,
+    "in_strength": 520,
+    "expected": 8.156604752617765,
+    "ratio": 56.898819385105845,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Mont-Louis",
+    "department_name": "Pyrénées-Orientales",
+    "population": 153.0,
+    "in_strength": 203,
+    "expected": 2.6153588615895726,
+    "ratio": 56.425933858833275,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Foix",
+    "department_name": "Ariège",
+    "population": 9934.0,
+    "in_strength": 1113,
+    "expected": 19.356417872000257,
+    "ratio": 54.72475594698216,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Saint-Pol-sur-Ternoise",
+    "department_name": "Pas-de-Calais",
+    "population": 4677.0,
+    "in_strength": 782,
+    "expected": 13.90122051860439,
+    "ratio": 52.546031314845195,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Paris",
+    "department_name": "Paris",
+    "population": 2103778.0,
+    "in_strength": 9150,
+    "expected": 186.01402054151808,
+    "ratio": 48.93216013164334,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Mirecourt",
+    "department_name": "Vosges",
+    "population": 4700.0,
+    "in_strength": 723,
+    "expected": 13.931522814584628,
+    "ratio": 48.48802154947118,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Blois",
+    "department_name": "Loir-et-Cher",
+    "population": 47219.0,
+    "in_strength": 1881,
+    "expected": 37.81968941389696,
+    "ratio": 48.48055274049327,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Orléans",
+    "department_name": "Loiret",
+    "population": 116357.0,
+    "in_strength": 2524,
+    "expected": 55.39617300514431,
+    "ratio": 44.772541565358985,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Poitiers",
+    "department_name": "Vienne",
+    "population": 89916.0,
+    "in_strength": 2168,
+    "expected": 49.6859411436648,
+    "ratio": 42.79293135451825,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Le Châtelet-sur-Meuse",
+    "department_name": "Haute-Marne",
+    "population": 155.0,
+    "in_strength": 154,
+    "expected": 2.6348551916212526,
+    "ratio": 42.642689138563846,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Tarbes",
+    "department_name": "Hautes-Pyrénées",
+    "population": 44399.0,
+    "in_strength": 1594,
+    "expected": 36.84227304006076,
+    "ratio": 42.148630932171905,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Montreuil-sur-Mer",
+    "department_name": "Pas-de-Calais",
+    "population": 1912.0,
+    "in_strength": 428,
+    "expected": 9.288400654097552,
+    "ratio": 41.69744301599905,
+    "seat": "Sub-prefecture"
+   }
+  ],
+  "under_cited": [
+   {
+    "city": "Herblay-sur-Seine",
+    "department_name": "Val-d'Oise",
+    "population": 31779.0,
+    "in_strength": 8,
+    "expected": 31.94841430811202,
+    "ratio": 0.27315426823997924,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Vitrolles",
+    "department_name": "Bouches-du-Rhône",
+    "population": 36758.0,
+    "in_strength": 9,
+    "expected": 33.99542022413399,
+    "ratio": 0.28575167653233874,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Saint-Laurent-du-Var",
+    "department_name": "Alpes-Maritimes",
+    "population": 32172.0,
+    "in_strength": 10,
+    "expected": 32.116541745352585,
+    "ratio": 0.3321602866804076,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Villiers-le-Bel",
+    "department_name": "Val-d'Oise",
+    "population": 30053.0,
+    "in_strength": 10,
+    "expected": 31.195213757925863,
+    "ratio": 0.3416656923823655,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Le Perreux-sur-Marne",
+    "department_name": "Val-de-Marne",
+    "population": 35260.0,
+    "in_strength": 12,
+    "expected": 33.39761972407793,
+    "ratio": 0.3779331274745198,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Villepinte",
+    "department_name": "Seine-Saint-Denis",
+    "population": 41470.0,
+    "in_strength": 13,
+    "expected": 35.78775530370662,
+    "ratio": 0.3805614092086071,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Le Chesnay-Rocquencourt",
+    "department_name": "Yvelines",
+    "population": 30689.0,
+    "in_strength": 12,
+    "expected": 31.475632751445644,
+    "ratio": 0.40030012962322675,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Maisons-Alfort",
+    "department_name": "Val-de-Marne",
+    "population": 56799.0,
+    "in_strength": 16,
+    "expected": 40.905760750946506,
+    "ratio": 0.4056721485390533,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Fontenay-sous-Bois",
+    "department_name": "Val-de-Marne",
+    "population": 53757.0,
+    "in_strength": 17,
+    "expected": 39.96133558795467,
+    "ratio": 0.4394387961630134,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Joué-lès-Tours",
+    "department_name": "Indre-et-Loire",
+    "population": 38423.0,
+    "in_strength": 15,
+    "expected": 34.64334679525452,
+    "ratio": 0.44889162883352485,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Six-Fours-les-Plages",
+    "department_name": "Var",
+    "population": 37109.0,
+    "in_strength": 15,
+    "expected": 34.13341851691066,
+    "ratio": 0.4554068654690909,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Le Cannet",
+    "department_name": "Alpes-Maritimes",
+    "population": 41938.0,
+    "in_strength": 16,
+    "expected": 35.95911283855808,
+    "ratio": 0.45996775069407314,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Pontault-Combault",
+    "department_name": "Seine-et-Marne",
+    "population": 39096.0,
+    "in_strength": 16,
+    "expected": 34.90056774923316,
+    "ratio": 0.47353011570027664,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Champigny-sur-Marne",
+    "department_name": "Val-de-Marne",
+    "population": 78072.0,
+    "in_strength": 23,
+    "expected": 46.80630725427307,
+    "ratio": 0.5020258074389297,
+    "seat": "Ordinary commune"
+   },
+   {
+    "city": "Vitry-sur-Seine",
+    "department_name": "Val-de-Marne",
+    "population": 93963.0,
+    "in_strength": 26,
+    "expected": 50.61848942404538,
+    "ratio": 0.5230683869532731,
+    "seat": "Ordinary commune"
+   }
+  ],
+  "top_cited": [
+   {
+    "city": "Paris",
+    "department_name": "Paris",
+    "population": 2103778.0,
+    "in_strength": 9150,
+    "in_degree": 2797,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Lyon",
+    "department_name": "Rhône",
+    "population": 519127.0,
+    "in_strength": 3440,
+    "in_degree": 1215,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Toulouse",
+    "department_name": "Haute-Garonne",
+    "population": 514819.0,
+    "in_strength": 3318,
+    "in_degree": 1347,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Lille",
+    "department_name": "Nord",
+    "population": 238246.0,
+    "in_strength": 2979,
+    "in_degree": 582,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Bordeaux",
+    "department_name": "Gironde",
+    "population": 267991.0,
+    "in_strength": 2776,
+    "in_degree": 1129,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Orléans",
+    "department_name": "Loiret",
+    "population": 116357.0,
+    "in_strength": 2524,
+    "in_degree": 572,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Amiens",
+    "department_name": "Somme",
+    "population": 136449.0,
+    "in_strength": 2402,
+    "in_degree": 1023,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Arras",
+    "department_name": "Pas-de-Calais",
+    "population": 42875.0,
+    "in_strength": 2212,
+    "in_degree": 783,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Poitiers",
+    "department_name": "Vienne",
+    "population": 89916.0,
+    "in_strength": 2168,
+    "in_degree": 631,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Strasbourg",
+    "department_name": "Bas-Rhin",
+    "population": 293771.0,
+    "in_strength": 2003,
+    "in_degree": 669,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Nantes",
+    "department_name": "Loire-Atlantique",
+    "population": 327734.0,
+    "in_strength": 1882,
+    "in_degree": 551,
+    "seat": "Regional capital"
+   },
+   {
+    "city": "Blois",
+    "department_name": "Loir-et-Cher",
+    "population": 47219.0,
+    "in_strength": 1881,
+    "in_degree": 338,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Pau",
+    "department_name": "Pyrénées-Atlantiques",
+    "population": 80441.0,
+    "in_strength": 1825,
+    "in_degree": 761,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Grenoble",
+    "department_name": "Isère",
+    "population": 156140.0,
+    "in_strength": 1722,
+    "in_degree": 430,
+    "seat": "Prefecture"
+   },
+   {
+    "city": "Rennes",
+    "department_name": "Ille-et-Vilaine",
+    "population": 230890.0,
+    "in_strength": 1613,
+    "in_degree": 489,
+    "seat": "Regional capital"
+   }
+  ],
+  "class_share": {
+   "<200": {
+    "<200": 0.2442,
+    "200–500": 0.1113,
+    "500–2k": 0.053,
+    "2k–10k": 0.0243,
+    "10k–50k": 0.0142,
+    "50k–200k": 0.0077,
+    "200k+": 0.0048
+   },
+   "200–500": {
+    "<200": 0.1842,
+    "200–500": 0.1773,
+    "500–2k": 0.1092,
+    "2k–10k": 0.0529,
+    "10k–50k": 0.0257,
+    "50k–200k": 0.0155,
+    "200k+": 0.0048
+   },
+   "500–2k": {
+    "<200": 0.2239,
+    "200–500": 0.2676,
+    "500–2k": 0.2713,
+    "2k–10k": 0.1933,
+    "10k–50k": 0.1085,
+    "50k–200k": 0.0666,
+    "200k+": 0.0331
+   },
+   "2k–10k": {
+    "<200": 0.1803,
+    "200–500": 0.2142,
+    "500–2k": 0.2634,
+    "2k–10k": 0.2919,
+    "10k–50k": 0.231,
+    "50k–200k": 0.1916,
+    "200k+": 0.1395
+   },
+   "10k–50k": {
+    "<200": 0.1077,
+    "200–500": 0.1463,
+    "500–2k": 0.1778,
+    "2k–10k": 0.2242,
+    "10k–50k": 0.2708,
+    "50k–200k": 0.283,
+    "200k+": 0.2935
+   },
+   "50k–200k": {
+    "<200": 0.0439,
+    "200–500": 0.059,
+    "500–2k": 0.0853,
+    "2k–10k": 0.1293,
+    "10k–50k": 0.1824,
+    "50k–200k": 0.1941,
+    "200k+": 0.2327
+   },
+   "200k+": {
+    "<200": 0.0158,
+    "200–500": 0.0243,
+    "500–2k": 0.04,
+    "2k–10k": 0.0841,
+    "10k–50k": 0.1674,
+    "50k–200k": 0.2414,
+    "200k+": 0.2914
+   }
+  },
+  "class_balance": [
+   {
+    "size_class": "<200",
+    "out": 86249,
+    "inn": 45576,
+    "n": 8799,
+    "net": -40673,
+    "in_per_city": 5.179679509035117,
+    "out_per_city": 9.80213660643255,
+    "share_cities": 0.253317978983734,
+    "share_in": 0.08599813195211005,
+    "share_out": 0.16274470955629144
+   },
+   {
+    "size_class": "200–500",
+    "out": 108772,
+    "inn": 60890,
+    "n": 9449,
+    "net": -47882,
+    "in_per_city": 6.444068155360355,
+    "out_per_city": 11.511482696581648,
+    "share_cities": 0.27203109255793867,
+    "share_in": 0.11489437981753511,
+    "share_out": 0.20524374251129793
+   },
+   {
+    "size_class": "500–2k",
+    "out": 169265,
+    "inn": 121531,
+    "n": 11090,
+    "net": -47734,
+    "in_per_city": 10.958611361587016,
+    "out_per_city": 15.262849413886384,
+    "share_cities": 0.31927450698143084,
+    "share_in": 0.22931891728699064,
+    "share_out": 0.31938901625579047
+   },
+   {
+    "size_class": "2k–10k",
+    "out": 114620,
+    "inn": 128167,
+    "n": 4409,
+    "net": 13547,
+    "in_per_city": 29.06940349285552,
+    "out_per_city": 25.99682467679746,
+    "share_cities": 0.12693248884410538,
+    "share_in": 0.2418404989008708,
+    "share_out": 0.2162784334814563
+   },
+   {
+    "size_class": "10k–50k",
+    "out": 39930,
+    "inn": 94976,
+    "n": 865,
+    "net": 55046,
+    "in_per_city": 109.79884393063584,
+    "out_per_city": 46.16184971098266,
+    "share_cities": 0.02490283575644163,
+    "share_in": 0.17921183474380384,
+    "share_out": 0.07534459822818489
+   },
+   {
+    "size_class": "50k–200k",
+    "out": 9681,
+    "inn": 48968,
+    "n": 112,
+    "net": 39287,
+    "in_per_city": 437.2142857142857,
+    "out_per_city": 86.4375,
+    "share_cities": 0.0032244134158629623,
+    "share_in": 0.09239855462153161,
+    "share_out": 0.018267244063287197
+   },
+   {
+    "size_class": "200k+",
+    "out": 1448,
+    "inn": 29857,
+    "n": 11,
+    "net": 28409,
+    "in_per_city": 2714.2727272727275,
+    "out_per_city": 131.63636363636363,
+    "share_cities": 0.00031668346048654094,
+    "share_in": 0.05633768267715793,
+    "share_out": 0.002732255903691753
+   }
+  ],
+  "recip_by_distance": {
+   "[0, 5)": 0.6136455264382075,
+   "[5, 10)": 0.37665718628203393,
+   "[10, 20)": 0.1912751135463641,
+   "[20, 50)": 0.11931612878687028,
+   "[50, 100)": 0.08288865172536464,
+   "[100, 200)": 0.07833260963960052,
+   "[200, 2000)": 0.08799146351473365
+  },
+  "recip_by_popratio": {
+   "[0.0, 0.25)": 0.3940115491552007,
+   "[0.25, 0.5)": 0.3755457008265318,
+   "[0.5, 1.0)": 0.32018017297671875,
+   "[1.0, 1.5)": 0.23257081959899872,
+   "[1.5, 2.0)": 0.12463008370677264,
+   "[2.0, 10.0)": 0.032369089568138984
+  },
+  "mutual_pairs": [
+   {
+    "a": "Carling",
+    "b": "L'Hôpital",
+    "ab": 42,
+    "ba": 52,
+    "dist": 1.2145689923685834
+   },
+   {
+    "a": "Arvert",
+    "b": "La Tremblade",
+    "ab": 51,
+    "ba": 34,
+    "dist": 3.297777015721912
+   },
+   {
+    "a": "L'Isle-Adam",
+    "b": "Parmain",
+    "ab": 31,
+    "ba": 32,
+    "dist": 1.795051257133232
+   },
+   {
+    "a": "Buissoncourt",
+    "b": "Haraucourt",
+    "ab": 28,
+    "ba": 41,
+    "dist": 2.245037179853527
+   },
+   {
+    "a": "Gémozac",
+    "b": "Pons",
+    "ab": 35,
+    "ba": 26,
+    "dist": 10.045321521994158
+   },
+   {
+    "a": "La Grave",
+    "b": "Villar-d'Arêne",
+    "ab": 37,
+    "ba": 24,
+    "dist": 2.4559359682061697
+   },
+   {
+    "a": "Allarmont",
+    "b": "Luvigny",
+    "ab": 24,
+    "ba": 43,
+    "dist": 4.596684973883421
+   },
+   {
+    "a": "Arvert",
+    "b": "Étaules",
+    "ab": 23,
+    "ba": 61,
+    "dist": 2.479249118543793
+   },
+   {
+    "a": "Caudan",
+    "b": "Lanester",
+    "ab": 22,
+    "ba": 22,
+    "dist": 5.193606326126293
+   },
+   {
+    "a": "Corrençon-en-Vercors",
+    "b": "Villard-de-Lans",
+    "ab": 32,
+    "ba": 21,
+    "dist": 4.700296192415294
+   },
+   {
+    "a": "Champagney",
+    "b": "Ronchamp",
+    "ab": 25,
+    "ba": 21,
+    "dist": 3.719942702106771
+   },
+   {
+    "a": "Fréjus",
+    "b": "Saint-Raphaël",
+    "ab": 21,
+    "ba": 28,
+    "dist": 2.6585221441324105
+   }
+  ],
+  "dist_by_target_class": {
+   "<200": 5.178091017548828,
+   "200–500": 5.870472262043262,
+   "500–2k": 7.140930189276259,
+   "2k–10k": 9.082011809614686,
+   "10k–50k": 15.156587891143952,
+   "50k–200k": 25.75507351666467,
+   "200k+": 46.95829909710865
+  },
+  "far_reach": [
+   {
+    "city": "Source-Seine",
+    "department_name": "Côte-d'Or",
+    "population": 60.0,
+    "in_strength": 67,
+    "in_degree": 67,
+    "reach_km": 344.0996016791041
+   },
+   {
+    "city": "Charenton-le-Pont",
+    "department_name": "Val-de-Marne",
+    "population": 28830.0,
+    "in_strength": 283,
+    "in_degree": 156,
+    "reach_km": 154.77969869506575
+   },
+   {
+    "city": "Alfortville",
+    "department_name": "Val-de-Marne",
+    "population": 45531.0,
+    "in_strength": 178,
+    "in_degree": 151,
+    "reach_km": 142.36094249461357
+   },
+   {
+    "city": "Pont de Montvert - Sud Mont Lozère",
+    "department_name": "Lozère",
+    "population": 557.0,
+    "in_strength": 75,
+    "in_degree": 75,
+    "reach_km": 141.5790110684415
+   },
+   {
+    "city": "Le Châtelet-sur-Meuse",
+    "department_name": "Haute-Marne",
+    "population": 155.0,
+    "in_strength": 154,
+    "in_degree": 152,
+    "reach_km": 137.99966546687497
+   },
+   {
+    "city": "Saints-Geosmes",
+    "department_name": "Haute-Marne",
+    "population": 1111.0,
+    "in_strength": 159,
+    "in_degree": 145,
+    "reach_km": 114.16207281665855
+   },
+   {
+    "city": "Offendorf",
+    "department_name": "Bas-Rhin",
+    "population": 2484.0,
+    "in_strength": 71,
+    "in_degree": 67,
+    "reach_km": 86.5175663127641
+   },
+   {
+    "city": "Paris",
+    "department_name": "Paris",
+    "population": 2103778.0,
+    "in_strength": 9150,
+    "in_degree": 2797,
+    "reach_km": 86.50628277296371
+   },
+   {
+    "city": "Conflans-Sainte-Honorine",
+    "department_name": "Yvelines",
+    "population": 36958.0,
+    "in_strength": 160,
+    "in_degree": 139,
+    "reach_km": 84.65275613540608
+   },
+   {
+    "city": "Sévérac d'Aveyron",
+    "department_name": "Aveyron",
+    "population": 4026.0,
+    "in_strength": 61,
+    "in_degree": 60,
+    "reach_km": 81.00049773570817
+   },
+   {
+    "city": "Troussey",
+    "department_name": "Meuse",
+    "population": 467.0,
+    "in_strength": 75,
+    "in_degree": 72,
+    "reach_km": 78.87031639939094
+   },
+   {
+    "city": "Saint-Nicolas-de-la-Grave",
+    "department_name": "Tarn-et-Garonne",
+    "population": 2281.0,
+    "in_strength": 85,
+    "in_degree": 82,
+    "reach_km": 73.1992859613577
+   },
+   {
+    "city": "Marseille",
+    "department_name": "Bouches-du-Rhône",
+    "population": 886040.0,
+    "in_strength": 1265,
+    "in_degree": 518,
+    "reach_km": 71.91529082054407
+   },
+   {
+    "city": "Saint-Pierre-de-Frugie",
+    "department_name": "Dordogne",
+    "population": 520.0,
+    "in_strength": 504,
+    "in_degree": 494,
+    "reach_km": 68.4626675476659
+   },
+   {
+    "city": "Lamothe-Montravel",
+    "department_name": "Dordogne",
+    "population": 1443.0,
+    "in_strength": 520,
+    "in_degree": 503,
+    "reach_km": 67.436613791549
+   }
+  ],
+  "local_reach": [
+   {
+    "city": "Montreuil",
+    "department_name": "Seine-Saint-Denis",
+    "population": 111934.0,
+    "in_strength": 59,
+    "in_degree": 28,
+    "reach_km": 2.8596846080012144
+   },
+   {
+    "city": "Villeurbanne",
+    "department_name": "Rhône",
+    "population": 163684.0,
+    "in_strength": 76,
+    "in_degree": 26,
+    "reach_km": 3.9301603977126316
+   },
+   {
+    "city": "Argenteuil",
+    "department_name": "Val-d'Oise",
+    "population": 106130.0,
+    "in_strength": 89,
+    "in_degree": 34,
+    "reach_km": 5.153387160470527
+   },
+   {
+    "city": "Saint-Denis",
+    "department_name": "Seine-Saint-Denis",
+    "population": 149077.0,
+    "in_strength": 196,
+    "in_degree": 69,
+    "reach_km": 5.620555966099201
+   },
+   {
+    "city": "Boulogne-Billancourt",
+    "department_name": "Hauts-de-Seine",
+    "population": 119019.0,
+    "in_strength": 88,
+    "in_degree": 47,
+    "reach_km": 6.1569215486218205
+   },
+   {
+    "city": "Lille",
+    "department_name": "Nord",
+    "population": 238246.0,
+    "in_strength": 2979,
+    "in_degree": 582,
+    "reach_km": 15.0853844790284
+   },
+   {
+    "city": "Annecy",
+    "department_name": "Haute-Savoie",
+    "population": 132117.0,
+    "in_strength": 523,
+    "in_degree": 151,
+    "reach_km": 16.853188273256855
+   },
+   {
+    "city": "Mulhouse",
+    "department_name": "Haut-Rhin",
+    "population": 104978.0,
+    "in_strength": 545,
+    "in_degree": 200,
+    "reach_km": 18.182315528779895
+   },
+   {
+    "city": "Caen",
+    "department_name": "Calvados",
+    "population": 109400.0,
+    "in_strength": 654,
+    "in_degree": 282,
+    "reach_km": 20.26169641275059
+   },
+   {
+    "city": "Nîmes",
+    "department_name": "Gard",
+    "population": 151839.0,
+    "in_strength": 758,
+    "in_degree": 258,
+    "reach_km": 21.82050094513152
+   }
+  ],
+  "sections": [
+   {
+    "group": "Other",
+    "mentions": 1986,
+    "links": 1269,
+    "share": 0.0037474172822733577,
+    "median_km": 8.905792275598026,
+    "share_paris": 0.014098690835850957,
+    "share_gt100": 0.09969788519637462
+   },
+   {
+    "group": "Personalities",
+    "mentions": 3227,
+    "links": 2138,
+    "share": 0.0060890813544290665,
+    "median_km": 27.752201794346387,
+    "share_paris": 0.06817477533312674,
+    "share_gt100": 0.24418964982956307
+   },
+   {
+    "group": "Lead paragraph",
+    "mentions": 5553,
+    "links": 4455,
+    "share": 0.010478050437293029,
+    "median_km": 11.458579451363601,
+    "share_paris": 0.07149288672789483,
+    "share_gt100": 0.06735098145146767
+   },
+   {
+    "group": "Economy",
+    "mentions": 8447,
+    "links": 4801,
+    "share": 0.015938788410555415,
+    "median_km": 9.032694688618042,
+    "share_paris": 0.022138037172960815,
+    "share_gt100": 0.07091275008878892
+   },
+   {
+    "group": "Toponymy",
+    "mentions": 13820,
+    "links": 10195,
+    "share": 0.026077193776947533,
+    "median_km": 26.396130955617803,
+    "share_paris": 0.005426917510853835,
+    "share_gt100": 0.26447178002894356
+   },
+   {
+    "group": "Politics & administration",
+    "mentions": 21053,
+    "links": 13480,
+    "share": 0.03972526487598237,
+    "median_km": 9.769694887313015,
+    "share_paris": 0.007789863677385646,
+    "share_gt100": 0.050111623046596686
+   },
+   {
+    "group": "Urbanism",
+    "mentions": 36755,
+    "links": 24360,
+    "share": 0.06935363656090497,
+    "median_km": 10.414940871545676,
+    "share_paris": 0.0350700584954428,
+    "share_gt100": 0.07903686573255339
+   },
+   {
+    "group": "Culture & heritage",
+    "mentions": 39637,
+    "links": 25463,
+    "share": 0.07479173152944062,
+    "median_km": 11.432361718561186,
+    "share_paris": 0.046168983525493854,
+    "share_gt100": 0.12748189822640463
+   },
+   {
+    "group": "Population & society",
+    "mentions": 42105,
+    "links": 24264,
+    "share": 0.07944864283490419,
+    "median_km": 8.464810478771152,
+    "share_paris": 0.007528797054981593,
+    "share_gt100": 0.02522265764161026
+   },
+   {
+    "group": "History",
+    "mentions": 126618,
+    "links": 81639,
+    "share": 0.23891766437406245,
+    "median_km": 11.769838039023586,
+    "share_paris": 0.018291238212576413,
+    "share_gt100": 0.07660048334360044
+   },
+   {
+    "group": "Geography",
+    "mentions": 230764,
+    "links": 201979,
+    "share": 0.435432528563207,
+    "median_km": 8.579238606631735,
+    "share_paris": 0.01008389523495866,
+    "share_gt100": 0.027525957255031114
+   }
+  ],
+  "paris_by_distance": {
+   "[0, 25)": 0.8993288590604027,
+   "[25, 50)": 0.5444617784711389,
+   "[50, 100)": 0.19210897134805072,
+   "[100, 200)": 0.0660431654676259,
+   "[200, 400)": 0.05451642335766423,
+   "[400, 1200)": 0.051452784503631964
+  },
+  "paris_sections": {
+   "Geography": 0.25431693989071036,
+   "History": 0.25311475409836065,
+   "Culture & heritage": 0.2,
+   "Urbanism": 0.14087431693989072,
+   "Lead paragraph": 0.043387978142076504,
+   "Population & society": 0.0346448087431694,
+   "Personalities": 0.024043715846994537,
+   "Economy": 0.020437158469945354,
+   "Politics & administration": 0.017923497267759565,
+   "Toponymy": 0.00819672131147541,
+   "Other": 0.0030601092896174863
+  },
+  "big_city_pull": [
+   {
+    "city": "Paris",
+    "pct_lt50": 0.6570820021299254,
+    "pct_100_200": 0.0660431654676259,
+    "pct_gt300": 0.054056952861050035,
+    "citing": 2797
+   },
+   {
+    "city": "Marseille",
+    "pct_lt50": 0.6554621848739496,
+    "pct_100_200": 0.05045625335480408,
+    "pct_gt300": 0.005593536357986327,
+    "citing": 518
+   },
+   {
+    "city": "Lyon",
+    "pct_lt50": 0.5054602184087363,
+    "pct_100_200": 0.051473823141223056,
+    "pct_gt300": 0.010429835651074588,
+    "citing": 1215
+   },
+   {
+    "city": "Toulouse",
+    "pct_lt50": 0.7076923076923077,
+    "pct_100_200": 0.10759162303664921,
+    "pct_gt300": 0.0032706781731489144,
+    "citing": 1347
+   },
+   {
+    "city": "Nice",
+    "pct_lt50": 0.38650306748466257,
+    "pct_100_200": 0.036170212765957444,
+    "pct_gt300": 0.0017164324114256105,
+    "citing": 194
+   },
+   {
+    "city": "Nantes",
+    "pct_lt50": 0.7342995169082126,
+    "pct_100_200": 0.05110255512775639,
+    "pct_gt300": 0.0023158523830868073,
+    "citing": 551
+   },
+   {
+    "city": "Montpellier",
+    "pct_lt50": 0.42136498516320475,
+    "pct_100_200": 0.01969100272644653,
+    "pct_gt300": 0.001294777729823047,
+    "citing": 298
+   },
+   {
+    "city": "Strasbourg",
+    "pct_lt50": 0.5314401622718052,
+    "pct_100_200": 0.03793574846206425,
+    "pct_gt300": 0.00289833531510107,
+    "citing": 669
+   },
+   {
+    "city": "Bordeaux",
+    "pct_lt50": 0.5871121718377088,
+    "pct_100_200": 0.08845411959217415,
+    "pct_gt300": 0.005413707045498177,
+    "citing": 1129
+   },
+   {
+    "city": "Lille",
+    "pct_lt50": 0.4351535836177474,
+    "pct_100_200": 0.021605839416058394,
+    "pct_gt300": 0.0018112296236667338,
+    "citing": 582
+   },
+   {
+    "city": "Rennes",
+    "pct_lt50": 0.5442359249329759,
+    "pct_100_200": 0.04002736914129319,
+    "pct_gt300": 0.001151474630413788,
+    "citing": 489
+   },
+   {
+    "city": "Toulon",
+    "pct_lt50": 0.5142857142857142,
+    "pct_100_200": 0.008358662613981762,
+    "pct_gt300": 0.0018558409279204639,
+    "citing": 155
+   }
+  ],
+  "hubs": [
+   {
+    "community": 33,
+    "hub": "Orléans",
+    "size": 356,
+    "hub_share": 0.17126892865819093,
+    "top3_share": 0.2584014899991902,
+    "second": "Pithiviers",
+    "hub_pop": 116357.0
+   },
+   {
+    "community": 25,
+    "hub": "Nantes",
+    "size": 681,
+    "hub_share": 0.16237432860487536,
+    "top3_share": 0.22448698526373778,
+    "second": "Saint-Nazaire",
+    "hub_pop": 327734.0
+   },
+   {
+    "community": 28,
+    "hub": "Limoges",
+    "size": 641,
+    "hub_share": 0.1414623562594923,
+    "top3_share": 0.20915599913213279,
+    "second": "Guéret",
+    "hub_pop": 129937.0
+   },
+   {
+    "community": 30,
+    "hub": "Valence",
+    "size": 586,
+    "hub_share": 0.1390879975598597,
+    "top3_share": 0.2665853286563977,
+    "second": "Die",
+    "hub_pop": 64458.0
+   },
+   {
+    "community": 22,
+    "hub": "Metz",
+    "size": 780,
+    "hub_share": 0.13340151957919347,
+    "top3_share": 0.18702513150204558,
+    "second": "Amnéville",
+    "hub_pop": 122572.0
+   },
+   {
+    "community": 35,
+    "hub": "Perpignan",
+    "size": 241,
+    "hub_share": 0.12924424972617743,
+    "top3_share": 0.20460021905805037,
+    "second": "Mont-Louis",
+    "hub_pop": 121616.0
+   },
+   {
+    "community": 1,
+    "hub": "Paris",
+    "size": 1756,
+    "hub_share": 0.1260957305921675,
+    "top3_share": 0.1697988270164596,
+    "second": "Versailles",
+    "hub_pop": 2103778.0
+   },
+   {
+    "community": 7,
+    "hub": "Lyon",
+    "size": 1280,
+    "hub_share": 0.12122508864164323,
+    "top3_share": 0.2350531849859396,
+    "second": "Grenoble",
+    "hub_pop": 519127.0
+   },
+   {
+    "community": 32,
+    "hub": "Auxerre",
+    "size": 528,
+    "hub_share": 0.10933536276002029,
+    "top3_share": 0.20725520040588533,
+    "second": "Nevers",
+    "hub_pop": 35097.0
+   },
+   {
+    "community": 10,
+    "hub": "Blois",
+    "size": 1132,
+    "hub_share": 0.1034780605781412,
+    "top3_share": 0.191523666935391,
+    "second": "Tours",
+    "hub_pop": 47219.0
+   },
+   {
+    "community": 6,
+    "hub": "Toulouse",
+    "size": 1351,
+    "hub_share": 0.09965115211603782,
+    "top3_share": 0.173414119159093,
+    "second": "Foix",
+    "hub_pop": 514819.0
+   },
+   {
+    "community": 23,
+    "hub": "Mâcon",
+    "size": 748,
+    "hub_share": 0.09899135446685879,
+    "top3_share": 0.21123919308357347,
+    "second": "Bourg-en-Bresse",
+    "hub_pop": 35177.0
+   },
+   {
+    "community": 9,
+    "hub": "Tarbes",
+    "size": 1165,
+    "hub_share": 0.09807729656243931,
+    "top3_share": 0.15465786236809737,
+    "second": "Auch",
+    "hub_pop": 44399.0
+   },
+   {
+    "community": 19,
+    "hub": "Pau",
+    "size": 859,
+    "hub_share": 0.0977955411228377,
+    "top3_share": 0.1731717979141947,
+    "second": "Bayonne",
+    "hub_pop": 80441.0
+   },
+   {
+    "community": 27,
+    "hub": "Nîmes",
+    "size": 658,
+    "hub_share": 0.096391188876738,
+    "top3_share": 0.2379315731916888,
+    "second": "Montpellier",
+    "hub_pop": 151839.0
+   },
+   {
+    "community": 12,
+    "hub": "Troyes",
+    "size": 1087,
+    "hub_share": 0.09590643274853801,
+    "top3_share": 0.19576023391812866,
+    "second": "Sens",
+    "hub_pop": 62088.0
+   },
+   {
+    "community": 14,
+    "hub": "Strasbourg",
+    "size": 1033,
+    "hub_share": 0.0932679236361487,
+    "top3_share": 0.14693539807317219,
+    "second": "Mulhouse",
+    "hub_pop": 293771.0
+   },
+   {
+    "community": 5,
+    "hub": "Rouen",
+    "size": 1363,
+    "hub_share": 0.09223911304149046,
+    "top3_share": 0.1516744770830952,
+    "second": "Dieppe",
+    "hub_pop": 117662.0
+   },
+   {
+    "community": 34,
+    "hub": "Bastia",
+    "size": 349,
+    "hub_share": 0.09157153266941948,
+    "top3_share": 0.1765848919115861,
+    "second": "Corte",
+    "hub_pop": 46867.0
+   },
+   {
+    "community": 4,
+    "hub": "Besançon",
+    "size": 1366,
+    "hub_share": 0.09015188633023027,
+    "top3_share": 0.17226849583537482,
+    "second": "Vesoul",
+    "hub_pop": 118489.0
+   },
+   {
+    "community": 18,
+    "hub": "Dijon",
+    "size": 914,
+    "hub_share": 0.08984446477584629,
+    "top3_share": 0.20841720036596523,
+    "second": "Autun",
+    "hub_pop": 161830.0
+   },
+   {
+    "community": 24,
+    "hub": "Le Mans",
+    "size": 701,
+    "hub_share": 0.08531242794558451,
+    "top3_share": 0.21743140419644916,
+    "second": "Angers",
+    "hub_pop": 146249.0
+   },
+   {
+    "community": 20,
+    "hub": "Clermont-Ferrand",
+    "size": 856,
+    "hub_share": 0.0829601433049709,
+    "top3_share": 0.19167039856695028,
+    "second": "Vichy",
+    "hub_pop": 146351.0
+   },
+   {
+    "community": 3,
+    "hub": "Lille",
+    "size": 1572,
+    "hub_share": 0.08263927720062392,
+    "top3_share": 0.1757556137614409,
+    "second": "Arras",
+    "hub_pop": 238246.0
+   },
+   {
+    "community": 31,
+    "hub": "Annecy",
+    "size": 565,
+    "hub_share": 0.08173313638601674,
+    "top3_share": 0.1884129328737896,
+    "second": "Chambéry",
+    "hub_pop": 132117.0
+   },
+   {
+    "community": 29,
+    "hub": "Le Puy-en-Velay",
+    "size": 631,
+    "hub_share": 0.07676767676767676,
+    "top3_share": 0.12912457912457911,
+    "second": "Aurillac",
+    "hub_pop": 18540.0
+   },
+   {
+    "community": 2,
+    "hub": "Bordeaux",
+    "size": 1660,
+    "hub_share": 0.07571553738317757,
+    "top3_share": 0.1925379672897196,
+    "second": "Poitiers",
+    "hub_pop": 267991.0
+   },
+   {
+    "community": 0,
+    "hub": "Amiens",
+    "size": 2155,
+    "hub_share": 0.07557340661663672,
+    "top3_share": 0.14466405947221928,
+    "second": "Beauvais",
+    "hub_pop": 136449.0
+   },
+   {
+    "community": 15,
+    "hub": "Reims",
+    "size": 994,
+    "hub_share": 0.0726767565986693,
+    "top3_share": 0.19602251955838268,
+    "second": "Châlons-en-Champagne",
+    "hub_pop": 177674.0
+   },
+   {
+    "community": 26,
+    "hub": "Verdun",
+    "size": 677,
+    "hub_share": 0.05250596658711217,
+    "top3_share": 0.1295942720763723,
+    "second": "Charleville-Mézières",
+    "hub_pop": 16890.0
+   },
+   {
+    "community": 11,
+    "hub": "Caen",
+    "size": 1115,
+    "hub_share": 0.051826923076923076,
+    "top3_share": 0.10201923076923076,
+    "second": "Coutances",
+    "hub_pop": 109400.0
+   },
+   {
+    "community": 16,
+    "hub": "Mirecourt",
+    "size": 938,
+    "hub_share": 0.049593047316871294,
+    "top3_share": 0.1330528348737757,
+    "second": "Nancy",
+    "hub_pop": 4700.0
+   },
+   {
+    "community": 21,
+    "hub": "Bergerac",
+    "size": 786,
+    "hub_share": 0.049060542797494784,
+    "top3_share": 0.13778705636743216,
+    "second": "Périgueux",
+    "hub_pop": 27110.0
+   },
+   {
+    "community": 17,
+    "hub": "Albi",
+    "size": 923,
+    "hub_share": 0.04576144036009002,
+    "top3_share": 0.12378094523630907,
+    "second": "Cahors",
+    "hub_pop": 51290.0
+   },
+   {
+    "community": 13,
+    "hub": "Marseille",
+    "size": 1060,
+    "hub_share": 0.03796317344851102,
+    "top3_share": 0.09497613093884974,
+    "second": "Avignon",
+    "hub_pop": 886040.0
+   },
+   {
+    "community": 8,
+    "hub": "Rennes",
+    "size": 1220,
+    "hub_share": 0.036281540504648074,
+    "top3_share": 0.09054448871181939,
+    "second": "Quimper",
+    "hub_pop": 230890.0
+   }
+  ],
+  "bridges": [
+   {
+    "city": "Paris",
+    "department_name": "Paris",
+    "population": 2103778.0,
+    "strength": 9233,
+    "participation": 0.7902118481228403
+   },
+   {
+    "city": "Angers",
+    "department_name": "Maine-et-Loire",
+    "population": 159022.0,
+    "strength": 843,
+    "participation": 0.7472746742766119
+   },
+   {
+    "city": "Laperrière-sur-Saône",
+    "department_name": "Côte-d'Or",
+    "population": 432.0,
+    "strength": 153,
+    "participation": 0.7421077363407236
+   },
+   {
+    "city": "Verdun",
+    "department_name": "Meuse",
+    "population": 16890.0,
+    "strength": 521,
+    "participation": 0.6944418860820584
+   },
+   {
+    "city": "Cluny",
+    "department_name": "Saône-et-Loire",
+    "population": 4942.0,
+    "strength": 168,
+    "participation": 0.690405328798186
+   },
+   {
+    "city": "Commercy",
+    "department_name": "Meuse",
+    "population": 5350.0,
+    "strength": 163,
+    "participation": 0.6877187699951071
+   },
+   {
+    "city": "Brive-la-Gaillarde",
+    "department_name": "Corrèze",
+    "population": 47095.0,
+    "strength": 272,
+    "participation": 0.6862835207612457
+   },
+   {
+    "city": "Joigny",
+    "department_name": "Yonne",
+    "population": 9016.0,
+    "strength": 247,
+    "participation": 0.678293366552476
+   },
+   {
+    "city": "Dijon",
+    "department_name": "Côte-d'Or",
+    "population": 161830.0,
+    "strength": 1026,
+    "participation": 0.6714829634189436
+   },
+   {
+    "city": "Neublans-Abergement",
+    "department_name": "Jura",
+    "population": 536.0,
+    "strength": 368,
+    "participation": 0.6666026701323251
+   },
+   {
+    "city": "Laval",
+    "department_name": "Mayenne",
+    "population": 49400.0,
+    "strength": 508,
+    "participation": 0.6643313286626573
+   },
+   {
+    "city": "Nancy",
+    "department_name": "Meurthe-et-Moselle",
+    "population": 103671.0,
+    "strength": 1263,
+    "participation": 0.6639948494485537
+   },
+   {
+    "city": "Nevers",
+    "department_name": "Nièvre",
+    "population": 33085.0,
+    "strength": 445,
+    "participation": 0.6575230400201995
+   },
+   {
+    "city": "Lyon",
+    "department_name": "Rhône",
+    "population": 519127.0,
+    "strength": 3631,
+    "participation": 0.6458567974101651
+   },
+   {
+    "city": "Candé",
+    "department_name": "Maine-et-Loire",
+    "population": 2801.0,
+    "strength": 187,
+    "participation": 0.6455431954016415
+   }
+  ],
+  "top_ties": [
+   {
+    "a": "Lumeau",
+    "b": "Orléans",
+    "w": 270,
+    "links": 3,
+    "dist": 25.497688398147098
+   },
+   {
+    "a": "Anglet",
+    "b": "Bayonne",
+    "w": 104,
+    "links": 9,
+    "dist": 3.6347439732975415
+   },
+   {
+    "a": "Villeurbanne",
+    "b": "Lyon",
+    "w": 83,
+    "links": 2,
+    "dist": 3.864529781835798
+   },
+   {
+    "a": "Saint-Georges-de-Didonne",
+    "b": "Royan",
+    "w": 82,
+    "links": 27,
+    "dist": 2.9253764893301066
+   },
+   {
+    "a": "Villeneuve-d'Ascq",
+    "b": "Lille",
+    "w": 73,
+    "links": 26,
+    "dist": 5.237268513040134
+   },
+   {
+    "a": "Agnetz",
+    "b": "Ronquerolles",
+    "w": 73,
+    "links": 1,
+    "dist": 27.005431198244437
+   },
+   {
+    "a": "Lumeau",
+    "b": "Terminiers",
+    "w": 72,
+    "links": 6,
+    "dist": 5.029800269673915
+   },
+   {
+    "a": "Neublans-Abergement",
+    "b": "Rye",
+    "w": 71,
+    "links": 5,
+    "dist": 8.701751160125339
+   },
+   {
+    "a": "Lacroix-sur-Meuse",
+    "b": "Saint-Mihiel",
+    "w": 71,
+    "links": 1,
+    "dist": 9.75785245456826
+   },
+   {
+    "a": "Bionville",
+    "b": "Allarmont",
+    "w": 68,
+    "links": 7,
+    "dist": 0.2742544149733719
+   },
+   {
+    "a": "Lescar",
+    "b": "Pau",
+    "w": 66,
+    "links": 4,
+    "dist": 6.432622018304906
+   },
+   {
+    "a": "Linselles",
+    "b": "Lille",
+    "w": 64,
+    "links": 3,
+    "dist": 11.30270632971157
+   },
+   {
+    "a": "Bellerive-sur-Allier",
+    "b": "Vichy",
+    "w": 63,
+    "links": 7,
+    "dist": 2.000622336655272
+   },
+   {
+    "a": "Genlis",
+    "b": "Dijon",
+    "w": 63,
+    "links": 1,
+    "dist": 16.40979612978762
+   },
+   {
+    "a": "Rezé",
+    "b": "Nantes",
+    "w": 63,
+    "links": 6,
+    "dist": 4.55624110619217
+   }
+  ],
+  "long_ties": [
+   {
+    "a": "Bellegarde",
+    "b": "Antin",
+    "w": 16,
+    "dist": 543.6281605253046
+   },
+   {
+    "a": "Breuilpont",
+    "b": "Lorey",
+    "w": 14,
+    "dist": 362.5319776941134
+   },
+   {
+    "a": "Neuville-sur-Saône",
+    "b": "Vimy",
+    "w": 13,
+    "dist": 522.1072729948996
+   },
+   {
+    "a": "Chavannes",
+    "b": "Gamaches",
+    "w": 11,
+    "dist": 353.5771229374683
+   },
+   {
+    "a": "Villequier-Aumont",
+    "b": "Genlis",
+    "w": 10,
+    "dist": 307.2255330335659
+   },
+   {
+    "a": "Toulouse",
+    "b": "Lyon",
+    "w": 10,
+    "dist": 359.54989259888384
+   },
+   {
+    "a": "Entraunes",
+    "b": "Malancourt",
+    "w": 9,
+    "dist": 574.048869588367
+   },
+   {
+    "a": "Penmarch",
+    "b": "Bordeaux",
+    "w": 9,
+    "dist": 438.91029624035133
+   },
+   {
+    "a": "Minerve",
+    "b": "Cesse",
+    "w": 9,
+    "dist": 708.7371595288339
+   },
+   {
+    "a": "Cerelles",
+    "b": "Chanceaux",
+    "w": 9,
+    "dist": 303.72651352360316
+   },
+   {
+    "a": "Alsting",
+    "b": "Palinges",
+    "w": 9,
+    "dist": 358.65860073787894
+   },
+   {
+    "a": "Strasbourg",
+    "b": "Lyon",
+    "w": 9,
+    "dist": 383.0356762239557
+   }
+  ],
+  "longrange_targets": [
+   {
+    "city": "Paris",
+    "w": 2354,
+    "share": 0.22008227374719522
+   },
+   {
+    "city": "Lyon",
+    "w": 331,
+    "share": 0.03094614809274495
+   },
+   {
+    "city": "Marseille",
+    "w": 210,
+    "share": 0.01963350785340314
+   },
+   {
+    "city": "Bordeaux",
+    "w": 197,
+    "share": 0.018418100224382946
+   },
+   {
+    "city": "Toulouse",
+    "w": 108,
+    "share": 0.010097232610321616
+   },
+   {
+    "city": "Strasbourg",
+    "w": 99,
+    "share": 0.00925579655946148
+   },
+   {
+    "city": "Nantes",
+    "w": 72,
+    "share": 0.006731488406881077
+   },
+   {
+    "city": "Nice",
+    "w": 64,
+    "share": 0.005983545250560957
+   },
+   {
+    "city": "Source-Seine",
+    "w": 63,
+    "share": 0.0058900523560209425
+   },
+   {
+    "city": "Toulon",
+    "w": 60,
+    "share": 0.005609573672400898
+   },
+   {
+    "city": "Versailles",
+    "w": 60,
+    "share": 0.005609573672400898
+   },
+   {
+    "city": "Lille",
+    "w": 56,
+    "share": 0.005235602094240838
+   }
+  ],
+  "template_stars": [
+   {
+    "city": "Lamothe-Montravel",
+    "department_name": "Dordogne",
+    "population": 1443.0,
+    "in_degree": 503,
+    "geo_share": 0.9961538461538462,
+    "modal_dep_share": 0.9960238568588469
+   },
+   {
+    "city": "Saint-Pierre-de-Frugie",
+    "department_name": "Dordogne",
+    "population": 520.0,
+    "in_degree": 494,
+    "geo_share": 0.998015873015873,
+    "modal_dep_share": 1.0
+   },
+   {
+    "city": "Ectot-lès-Baons",
+    "department_name": "Seine-Maritime",
+    "population": 398.0,
+    "in_degree": 206,
+    "geo_share": 0.9903381642512077,
+    "modal_dep_share": 0.9951456310679612
+   },
+   {
+    "city": "La Ferté-Alais",
+    "department_name": "Essonne",
+    "population": 3731.0,
+    "in_degree": 188,
+    "geo_share": 0.8731707317073171,
+    "modal_dep_share": 0.9627659574468085
+   },
+   {
+    "city": "Saint-Pol-sur-Ternoise",
+    "department_name": "Pas-de-Calais",
+    "population": 4677.0,
+    "in_degree": 185,
+    "geo_share": 0.9092071611253197,
+    "modal_dep_share": 0.9081081081081082
+   },
+   {
+    "city": "Avesnes-le-Comte",
+    "department_name": "Pas-de-Calais",
+    "population": 1840.0,
+    "in_degree": 176,
+    "geo_share": 0.9439252336448598,
+    "modal_dep_share": 0.9886363636363636
+   },
+   {
+    "city": "Amnéville",
+    "department_name": "Moselle",
+    "population": 10875.0,
+    "in_degree": 167,
+    "geo_share": 0.873015873015873,
+    "modal_dep_share": 0.9880239520958084
+   },
+   {
+    "city": "Lalinde",
+    "department_name": "Dordogne",
+    "population": 2931.0,
+    "in_degree": 165,
+    "geo_share": 0.9082969432314411,
+    "modal_dep_share": 0.9939393939393939
+   },
+   {
+    "city": "Frévent",
+    "department_name": "Pas-de-Calais",
+    "population": 3259.0,
+    "in_degree": 160,
+    "geo_share": 0.8978723404255319,
+    "modal_dep_share": 0.925
+   },
+   {
+    "city": "Saint-Hilaire-sur-Helpe",
+    "department_name": "Nord",
+    "population": 733.0,
+    "in_degree": 144,
+    "geo_share": 0.9862068965517241,
+    "modal_dep_share": 0.8819444444444444
+   },
+   {
+    "city": "Bagnères-de-Luchon",
+    "department_name": "Haute-Garonne",
+    "population": 2076.0,
+    "in_degree": 144,
+    "geo_share": 0.8960573476702509,
+    "modal_dep_share": 0.9166666666666666
+   },
+   {
+    "city": "Tomblaine",
+    "department_name": "Meurthe-et-Moselle",
+    "population": 9117.0,
+    "in_degree": 142,
+    "geo_share": 0.9197530864197531,
+    "modal_dep_share": 0.9577464788732394
+   },
+   {
+    "city": "Lesquin",
+    "department_name": "Nord",
+    "population": 9600.0,
+    "in_degree": 137,
+    "geo_share": 0.8717948717948718,
+    "modal_dep_share": 0.9343065693430657
+   },
+   {
+    "city": "Margny-lès-Compiègne",
+    "department_name": "Oise",
+    "population": 8677.0,
+    "in_degree": 133,
+    "geo_share": 0.935251798561151,
+    "modal_dep_share": 0.8571428571428571
+   },
+   {
+    "city": "Braine",
+    "department_name": "Aisne",
+    "population": 2248.0,
+    "in_degree": 129,
+    "geo_share": 0.8535031847133758,
+    "modal_dep_share": 0.9302325581395349
+   }
+  ],
+  "perm": [
+   {
+    "level": "region",
+    "metric": "ARI",
+    "null": "label_permutation",
+    "observed": 0.38899,
+    "null_mean": -0.0,
+    "null_sd": 8e-05,
+    "null_p95": 0.00014,
+    "null_max": 0.00034,
+    "z": 4710.46358,
+    "p_empirical": 0.0002
+   },
+   {
+    "level": "region",
+    "metric": "ARI",
+    "null": "spatial_spin",
+    "observed": 0.38899,
+    "null_mean": 0.34715,
+    "null_sd": 0.02987,
+    "null_p95": 0.40419,
+    "null_max": 0.43961,
+    "z": 1.4005,
+    "p_empirical": 0.1019
+   },
+   {
+    "level": "region",
+    "metric": "NMI",
+    "null": "label_permutation",
+    "observed": 0.723,
+    "null_mean": 0.00207,
+    "null_sd": 0.00014,
+    "null_p95": 0.00231,
+    "null_max": 0.00263,
+    "z": 5101.34819,
+    "p_empirical": 0.0002
+   },
+   {
+    "level": "region",
+    "metric": "NMI",
+    "null": "spatial_spin",
+    "observed": 0.723,
+    "null_mean": 0.64535,
+    "null_sd": 0.01345,
+    "null_p95": 0.66514,
+    "null_max": 0.72251,
+    "z": 5.77287,
+    "p_empirical": 0.001
+   },
+   {
+    "level": "old_region",
+    "metric": "ARI",
+    "null": "label_permutation",
+    "observed": 0.57535,
+    "null_mean": 0.0,
+    "null_sd": 7e-05,
+    "null_p95": 0.00012,
+    "null_max": 0.00026,
+    "z": 8162.3474,
+    "p_empirical": 0.0002
+   },
+   {
+    "level": "old_region",
+    "metric": "ARI",
+    "null": "spatial_spin",
+    "observed": 0.57535,
+    "null_mean": 0.41629,
+    "null_sd": 0.03194,
+    "null_p95": 0.46317,
+    "null_max": 0.57534,
+    "z": 4.97951,
+    "p_empirical": 0.001
+   },
+   {
+    "level": "old_region",
+    "metric": "NMI",
+    "null": "label_permutation",
+    "observed": 0.79834,
+    "null_mean": 0.00328,
+    "null_sd": 0.00017,
+    "null_p95": 0.00356,
+    "null_max": 0.00398,
+    "z": 4609.99626,
+    "p_empirical": 0.0002
+   },
+   {
+    "level": "old_region",
+    "metric": "NMI",
+    "null": "spatial_spin",
+    "observed": 0.79834,
+    "null_mean": 0.69383,
+    "null_sd": 0.01667,
+    "null_p95": 0.71272,
+    "null_max": 0.79834,
+    "z": 6.27068,
+    "p_empirical": 0.001
+   },
+   {
+    "level": "department",
+    "metric": "ARI",
+    "null": "label_permutation",
+    "observed": 0.44337,
+    "null_mean": -0.0,
+    "null_sd": 5e-05,
+    "null_p95": 8e-05,
+    "null_max": 0.00017,
+    "z": 9361.62227,
+    "p_empirical": 0.0002
+   },
+   {
+    "level": "department",
+    "metric": "ARI",
+    "null": "spatial_spin",
+    "observed": 0.44337,
+    "null_mean": 0.29154,
+    "null_sd": 0.02674,
+    "null_p95": 0.32881,
+    "null_max": 0.44287,
+    "z": 5.67739,
+    "p_empirical": 0.001
+   },
+   {
+    "level": "department",
+    "metric": "NMI",
+    "null": "label_permutation",
+    "observed": 0.78979,
+    "null_mean": 0.01242,
+    "null_sd": 0.0003,
+    "null_p95": 0.01292,
+    "null_max": 0.01359,
+    "z": 2566.30019,
+    "p_empirical": 0.0002
+   },
+   {
+    "level": "department",
+    "metric": "NMI",
+    "null": "spatial_spin",
+    "observed": 0.78979,
+    "null_mean": 0.70418,
+    "null_sd": 0.01208,
+    "null_p95": 0.71868,
+    "null_max": 0.78958,
+    "z": 7.08373,
+    "p_empirical": 0.001
+   }
+  ]
+ }
+}

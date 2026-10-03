@@ -1,0 +1,29 @@
+{
+  "nodes_file": "all_nodes.csv",
+  "gamma": 0.5,
+  "communities": 17,
+  "membership_sha256": "ba3a4262376e36a38c0833c65ae7412ed8f9b22a4d39bb624d6abc21a5f95128",
+  "colours": {
+    "0": "#2a78d6",
+    "1": "#eda100",
+    "2": "#eb6834",
+    "3": "#008300",
+    "4": "#e87ba4",
+    "5": "#8a5a44",
+    "6": "#1baf7a",
+    "7": "#4a3aa7",
+    "8": "#008300",
+    "9": "#3f8f9b",
+    "10": "#eda100",
+    "11": "#e87ba4",
+    "12": "#e34948",
+    "13": "#8a5a44",
+    "14": "#4a3aa7",
+    "15": "#008300",
+    "16": "#1baf7a"
+  },
+  "minimum_hull_cities": 12,
+  "spatial_link_km": 30.0,
+  "hull_buffer_km": 3.5,
+  "description": "Same partition as all.png; contiguous-pocket hulls replace citation lines."
+}

@@ -1,0 +1,192 @@
+{
+ "total_links": 394043,
+ "by_type": {
+  "Free prose": 0.7128003796539971,
+  "Rivers & hydrography": 0.11948949733912288,
+  "Climate (nearest weather station)": 0.08399844687001165,
+  "Distance to reference towns": 0.0371812213387879,
+  "Neighbouring communes": 0.033785652834842896,
+  "INSEE urban typology": 0.012744801963237514
+ },
+ "by_type_count": {
+  "Free prose": 280874,
+  "Climate (nearest weather station)": 33099,
+  "Rivers & hydrography": 47084,
+  "Distance to reference towns": 14651,
+  "Neighbouring communes": 13313,
+  "INSEE urban typology": 5022
+ },
+ "pages_with_any_template_link": 0.9752256136115423,
+ "top_targets": {
+  "Climate (nearest weather station)": [
+   [
+    "Ectot-lès-Baons",
+    205
+   ],
+   [
+    "Amnéville",
+    163
+   ],
+   [
+    "Valenciennes",
+    150
+   ],
+   [
+    "Tomblaine",
+    142
+   ],
+   [
+    "Saint-Hilaire-sur-Helpe",
+    142
+   ],
+   [
+    "Bergerac (Dordogne)",
+    138
+   ],
+   [
+    "Douai",
+    134
+   ],
+   [
+    "Lesquin",
+    129
+   ]
+  ],
+  "Distance to reference towns": [
+   [
+    "Toulouse",
+    594
+   ],
+   [
+    "Amiens",
+    565
+   ],
+   [
+    "Tarbes",
+    451
+   ],
+   [
+    "Arras",
+    410
+   ],
+   [
+    "Abbeville",
+    356
+   ],
+   [
+    "Orléans",
+    317
+   ],
+   [
+    "Foix",
+    299
+   ],
+   [
+    "Paris",
+    262
+   ]
+  ],
+  "INSEE urban typology": [
+   [
+    "Pau",
+    442
+   ],
+   [
+    "Châlons-en-Champagne",
+    219
+   ],
+   [
+    "Nantes",
+    103
+   ],
+   [
+    "Bordeaux",
+    99
+   ],
+   [
+    "Reims",
+    89
+   ],
+   [
+    "Épernay",
+    71
+   ],
+   [
+    "Serres-Castet",
+    71
+   ],
+   [
+    "Toulouse",
+    68
+   ]
+  ],
+  "Neighbouring communes": [
+   [
+    "Paris",
+    88
+   ],
+   [
+    "Angoulême",
+    45
+   ],
+   [
+    "Beauvais",
+    41
+   ],
+   [
+    "Amiens",
+    33
+   ],
+   [
+    "Lille",
+    32
+   ],
+   [
+    "Toulouse",
+    27
+   ],
+   [
+    "Rouen",
+    26
+   ],
+   [
+    "Lyon",
+    26
+   ]
+  ],
+  "Rivers & hydrography": [
+   [
+    "Charenton-le-Pont",
+    261
+   ],
+   [
+    "Toulouse",
+    159
+   ],
+   [
+    "Cambrai",
+    158
+   ],
+   [
+    "Caudry",
+    156
+   ],
+   [
+    "Saints-Geosmes",
+    154
+   ],
+   [
+    "Le Châtelet-sur-Meuse",
+    153
+   ],
+   [
+    "Bapaume",
+    149
+   ],
+   [
+    "Avesnes-le-Comte",
+    149
+   ]
+  ]
+ }
+}

@@ -1,0 +1,477 @@
+{
+  "layers": [
+    {
+      "key": "all",
+      "title": "All body-text citations",
+      "group": null,
+      "nodes": 34735,
+      "active_nodes": 34727,
+      "inactive_nodes": 8,
+      "lcc_nodes": 34727,
+      "outside_lcc": 0,
+      "lcc_share_active": 1.0,
+      "directed_edges": 291581,
+      "mentions": 529965,
+      "link_mentions": 394043,
+      "text_mentions": 135922,
+      "lcc_share_mentions": 1.0,
+      "communities": 17,
+      "labelled_communities": 17,
+      "gamma": 0.5,
+      "modularity": 0.8711299314652973,
+      "seed_stability_ari": 0.7309994795970204,
+      "median_distance_km": 9.739477106306971,
+      "share_mentions_under_50km": 0.8784202730368986,
+      "median_link_distance_km": 10.114274928428296,
+      "paris_endpoint_share": 0.017421905220156048,
+      "top_cited": [
+        {
+          "city": "Paris",
+          "mentions": 9150
+        },
+        {
+          "city": "Lyon",
+          "mentions": 3440
+        },
+        {
+          "city": "Toulouse",
+          "mentions": 3318
+        },
+        {
+          "city": "Lille",
+          "mentions": 2979
+        },
+        {
+          "city": "Bordeaux",
+          "mentions": 2776
+        }
+      ],
+      "visual_threshold": 2,
+      "visual_edges": 90332,
+      "visual_share": 0.3098007071791372,
+      "n_edges_lcc": 291581
+    },
+    {
+      "key": "history",
+      "title": "History citations",
+      "group": "History",
+      "nodes": 34735,
+      "active_nodes": 23822,
+      "inactive_nodes": 10913,
+      "lcc_nodes": 23002,
+      "outside_lcc": 820,
+      "lcc_share_active": 0.9655780371085552,
+      "directed_edges": 77250,
+      "mentions": 126618,
+      "link_mentions": 81639,
+      "text_mentions": 44979,
+      "lcc_share_mentions": 0.9946216177794627,
+      "communities": 136,
+      "labelled_communities": 20,
+      "gamma": 0.5,
+      "modularity": 0.8827532953103469,
+      "seed_stability_ari": 0.7492592740609786,
+      "median_distance_km": 11.754645611388277,
+      "share_mentions_under_50km": 0.8428738410020692,
+      "median_link_distance_km": 12.859770351807988,
+      "paris_endpoint_share": 0.0183781136963149,
+      "top_cited": [
+        {
+          "city": "Paris",
+          "mentions": 2316
+        },
+        {
+          "city": "Lille",
+          "mentions": 1613
+        },
+        {
+          "city": "Lyon",
+          "mentions": 1039
+        },
+        {
+          "city": "Strasbourg",
+          "mentions": 648
+        },
+        {
+          "city": "Amiens",
+          "mentions": 620
+        }
+      ],
+      "visual_threshold": 2,
+      "visual_edges": 20766,
+      "visual_share": 0.27075727547720874,
+      "n_edges_lcc": 76696
+    },
+    {
+      "key": "culture",
+      "title": "Culture & heritage citations",
+      "group": "Culture & heritage",
+      "nodes": 34735,
+      "active_nodes": 17005,
+      "inactive_nodes": 17730,
+      "lcc_nodes": 15090,
+      "outside_lcc": 1915,
+      "lcc_share_active": 0.8873860629226697,
+      "directed_edges": 30161,
+      "mentions": 39637,
+      "link_mentions": 25463,
+      "text_mentions": 14174,
+      "lcc_share_mentions": 0.9656633953124606,
+      "communities": 75,
+      "labelled_communities": 20,
+      "gamma": 0.5,
+      "modularity": 0.8914697016308151,
+      "seed_stability_ari": 0.8836152167134065,
+      "median_distance_km": 11.430735561846323,
+      "share_mentions_under_50km": 0.7969321593460655,
+      "median_link_distance_km": 12.319689688754803,
+      "paris_endpoint_share": 0.046446502005701745,
+      "top_cited": [
+        {
+          "city": "Paris",
+          "mentions": 1830
+        },
+        {
+          "city": "Lyon",
+          "mentions": 341
+        },
+        {
+          "city": "Bordeaux",
+          "mentions": 275
+        },
+        {
+          "city": "Toulouse",
+          "mentions": 266
+        },
+        {
+          "city": "Strasbourg",
+          "mentions": 260
+        }
+      ],
+      "visual_threshold": 2,
+      "visual_edges": 5405,
+      "visual_share": 0.18692720041500951,
+      "n_edges_lcc": 28915
+    },
+    {
+      "key": "geography",
+      "title": "Geography citations",
+      "group": "Geography",
+      "nodes": 34735,
+      "active_nodes": 34697,
+      "inactive_nodes": 38,
+      "lcc_nodes": 34695,
+      "outside_lcc": 2,
+      "lcc_share_active": 0.9999423581289448,
+      "directed_edges": 180351,
+      "mentions": 230764,
+      "link_mentions": 201979,
+      "text_mentions": 28785,
+      "lcc_share_mentions": 0.9999956665684422,
+      "communities": 23,
+      "labelled_communities": 20,
+      "gamma": 0.5,
+      "modularity": 0.9109035903725793,
+      "seed_stability_ari": 0.7526028337535865,
+      "median_distance_km": 8.566493392832408,
+      "share_mentions_under_50km": 0.9225269106099738,
+      "median_link_distance_km": 8.819498772968823,
+      "paris_endpoint_share": 0.010157563571440953,
+      "top_cited": [
+        {
+          "city": "Paris",
+          "mentions": 2327
+        },
+        {
+          "city": "Toulouse",
+          "mentions": 1211
+        },
+        {
+          "city": "Lyon",
+          "mentions": 1152
+        },
+        {
+          "city": "Pau",
+          "mentions": 1017
+        },
+        {
+          "city": "Amiens",
+          "mentions": 914
+        }
+      ],
+      "visual_threshold": 2,
+      "visual_edges": 31973,
+      "visual_share": 0.17728306071527586,
+      "n_edges_lcc": 180350
+    },
+    {
+      "key": "administration",
+      "title": "Politics & administration",
+      "group": "Politics & administration",
+      "nodes": 34735,
+      "active_nodes": 10677,
+      "inactive_nodes": 24058,
+      "lcc_nodes": 7738,
+      "outside_lcc": 2939,
+      "lcc_share_active": 0.7247354125690737,
+      "directed_edges": 16271,
+      "mentions": 21053,
+      "link_mentions": 13480,
+      "text_mentions": 7573,
+      "lcc_share_mentions": 0.8410202821450624,
+      "communities": 87,
+      "labelled_communities": 20,
+      "gamma": 0.5,
+      "modularity": 0.9653483110348372,
+      "seed_stability_ari": 0.9332227145308147,
+      "median_distance_km": 9.762665616112624,
+      "share_mentions_under_50km": 0.9073766209091341,
+      "median_link_distance_km": 9.624475219744534,
+      "paris_endpoint_share": 0.008359853702560205,
+      "top_cited": [
+        {
+          "city": "Poitiers",
+          "mentions": 1110
+        },
+        {
+          "city": "Valenciennes",
+          "mentions": 328
+        },
+        {
+          "city": "Orléans",
+          "mentions": 319
+        },
+        {
+          "city": "Bordeaux",
+          "mentions": 278
+        },
+        {
+          "city": "Lille",
+          "mentions": 234
+        }
+      ],
+      "visual_threshold": 2,
+      "visual_edges": 2197,
+      "visual_share": 0.1644830425993861,
+      "n_edges_lcc": 13357
+    }
+  ],
+  "method": [
+    "Corpus: the highest locally stored revision ID for each article, not a live or synchronized Wikipedia snapshot. Commune IDs come from article INSEE codes validated against cached official reference data; delegated/associated communes in COG 2025 are folded into their parent. Non-communes, overseas communes and self-citations are removed. Coordinates use an infobox town centre when within 20 km of the official centre, otherwise the official centre.",
+    "A citation is a resolved commune wikilink plus plain-text repeats of that name, anchored by at least one link anywhere in the article. Ambiguous names, short names, a stoplist and names contained in the source name are excluded from plain-text matching. Infoboxes, all templates, tables, images, references, comments and end matter are stripped. This excludes formal reference citations: the network measures mentions of places.",
+    "Topics use normalized level-2 headings and a documented ordered keyword list; first match wins and subsections inherit their parent topic. Culture includes heritage, monuments, sport, tourism and local life; Personalities is separate. Unmatched sections remain Other. Topic maps are overlapping subsets of the overall network, not an exhaustive five-way partition. The section inventory lists every heading and its assignment.",
+    "For each layer, aggregate w_ij = link counts + plain-text counts, then normalize p_ij = w_ij / sum_j(w_ij). Cluster the undirected projection p_ij + p_ji using Leiden RBConfigurationVertexPartition. Use fixed gamma = 0.5 for all five maps, five seeds 20261002–20261006, iterations until no improvement, and retain the highest objective. Gamma follows the earlier overall-map setting and is not reselected for each topic. Stability is mean pairwise adjusted Rand index across the ten seed pairs; Q is conventional weighted modularity at gamma = 1, for description.",
+    "Each layer is clustered and drawn on its largest weakly connected component. Active cities and citation counts in the table include all components; coverage columns disclose exclusions. Maps show ties with at least two mentions (or the maximum if none reach two), but clustering uses every positive tie in that component. Point sizes and line widths are scaled within each map; compare numeric totals before comparing visual density. Colours are assigned independently to each map and may repeat. They do not identify the same community across maps. Up to 20 communities of at least 50 cities are labelled by their most-cited city; other communities are grey. The overall territories view reuses the exact overall-map memberships and colours; it fits no new clusters. Hulls show contiguous pockets of at least 12 cities using Delaunay neighbours within 30 km, with a 3.5 km buffer. Smaller pockets remain dots, so filled areas do not show every member city. These are visual envelopes, not borders.",
+    "Distance is the great-circle distance between commune coordinates, weighted by mention count. The links-only median is a sensitivity check for ambiguous plain-text mentions. Templated prose can survive template removal; locality may reflect editorial conventions, administrative wording or geography. These are descriptive article relationships, not evidence of travel, influence or causal historical relationships. ARI between topics is calculated only on their shared clustered cities and is descriptive; no significance tests are claimed.",
+    "Leiden reference: Traag, Waltman & van Eck (2019), From Louvain to Leiden, Scientific Reports 9, 5233, doi:10.1038/s41598-019-41695-z. Department outlines: france-geojson, simplified IGN Admin Express 2018 under Licence Ouverte; retrieved 3 October 2026. Label offsets are bounded to 35 km with leader lines; markers always remain at their original coordinates."
+  ],
+  "findings": [
+    "Across the corpus, 529,965 inter-commune mentions connect 34,727 cities. The median mention spans 9.7 km; 87.8% span less than 50 km.",
+    "History has 126,618 mentions with a 11.8 km median; culture and heritage has 39,637 with a 11.4 km median. Their largest components cover 96.6% and 88.7% of active cities, respectively.",
+    "Geography's median is 8.6 km and administration's is 9.8 km. The five independently fitted networks yield 17, 136, 75, 23, 87 communities, in table order; network density and connectivity also affect those counts.",
+    "Paris is an endpoint of 1.7% of all mentions, 1.8% in history and 4.6% in culture. This measures textual prominence, not a city's real-world importance."
+  ],
+  "provenance": {
+    "input_sha256": {
+      "cache/pages.parquet": "da9c73edf56145c1eb05947fe81533b776773adaac3b1f4ede1263090bef30c9",
+      "cache/mentions.parquet": "bb0fae2fc9345ab89f73612f3f5ab65583237a7e70d6ae2b5cf965e12fcb3bfc",
+      "cache/geo_communes.json": "d221d26bc6cbe734e674fa859979c1edf2f050c3c35f0a1418e7db760305f933",
+      "cache/cog_communes_2025.csv": "3f8d2913fb0bdee1f72f54706854dc0cd626ed4089bd5761ec9292db0cb12e7e",
+      "cache/wiki_redirects.csv": "48b3555512642f6c64d8d34fb7a24841815f828e6278ce046b7d2bddb586c3b4",
+      "cache/departements_france_metropolitaine.geojson": "fc9dc4f10831e3c69e05b71db499c283d6085a22b614f9c92e9c2d0fffa4d3eb",
+      "section_maps.py": "81160e228847a0b05a73b3d9e9c2d0d524f72af8872f120888e8bd7195d0fdd3",
+      "analysis.py": "ab2720be813b9c6e6ae5feab02bcdd63209fd6c19d7ca7e9d36666a159aeaf8b",
+      "extract_links.py": "0f2b6c61dbca393e018a7e55708eb7fe30eb3e905e279e9d803a4583a78569c6",
+      "section_groups.py": "1d034d9b1150971b76b6e65332e043b7aed424d32c8f78d9a37f7ba5dec6c292"
+    },
+    "versions": {
+      "pandas": "3.0.0",
+      "numpy": "2.4.2",
+      "igraph": "1.0.0",
+      "leidenalg": "0.12.0",
+      "matplotlib": "3.10.8",
+      "geopandas": "1.2.0",
+      "scikit-learn": "1.8.0"
+    },
+    "seeds": [
+      20261002,
+      20261003,
+      20261004,
+      20261005,
+      20261006
+    ],
+    "gamma": 0.5,
+    "article_oldid_min": 196473812,
+    "article_oldid_max": 232762494
+  },
+  "section_groups": [
+    [
+      "Personalities",
+      [
+        "personnalit"
+      ]
+    ],
+    [
+      "Toponymy",
+      [
+        "toponym",
+        "nom des habitants",
+        "gentile"
+      ]
+    ],
+    [
+      "History",
+      [
+        "histoire",
+        "historique",
+        "prehistoire",
+        "antiquite",
+        "moyen age",
+        "epoque"
+      ]
+    ],
+    [
+      "Culture & heritage",
+      [
+        "culture",
+        "patrimoine",
+        "monument",
+        "lieux",
+        "tourisme",
+        "heraldique",
+        "vie locale",
+        "sport",
+        "cultes",
+        "festiv",
+        "gastronom",
+        "arts"
+      ]
+    ],
+    [
+      "Economy",
+      [
+        "economie",
+        "activite",
+        "emploi",
+        "agricult",
+        "industrie",
+        "commerce",
+        "entreprise"
+      ]
+    ],
+    [
+      "Politics & administration",
+      [
+        "politique",
+        "administr",
+        "jumelage",
+        "budget",
+        "fiscal",
+        "intercommun",
+        "liste des maires",
+        "tendances politiques"
+      ]
+    ],
+    [
+      "Population & society",
+      [
+        "population",
+        "demograph",
+        "enseignement",
+        "sante",
+        "equipement",
+        "service",
+        "societe",
+        "logement"
+      ]
+    ],
+    [
+      "Urbanism",
+      [
+        "urbanism",
+        "occupation des sols",
+        "morphologie",
+        "risques",
+        "voies",
+        "transport",
+        "acces"
+      ]
+    ],
+    [
+      "Geography",
+      [
+        "geograph",
+        "localisation",
+        "situation",
+        "hydrograph",
+        "climat",
+        "relief",
+        "geologie",
+        "milieux naturels",
+        "communes limitrophes"
+      ]
+    ]
+  ],
+  "partition_comparisons": [
+    {
+      "layer_a": "all",
+      "layer_b": "history",
+      "common_clustered_nodes": 23002,
+      "ari": 0.5102317753069632
+    },
+    {
+      "layer_a": "all",
+      "layer_b": "culture",
+      "common_clustered_nodes": 15090,
+      "ari": 0.3894300268558662
+    },
+    {
+      "layer_a": "all",
+      "layer_b": "geography",
+      "common_clustered_nodes": 34695,
+      "ari": 0.7212444005036338
+    },
+    {
+      "layer_a": "all",
+      "layer_b": "administration",
+      "common_clustered_nodes": 7738,
+      "ari": 0.3140736395608453
+    },
+    {
+      "layer_a": "history",
+      "layer_b": "culture",
+      "common_clustered_nodes": 12316,
+      "ari": 0.4181587062849288
+    },
+    {
+      "layer_a": "history",
+      "layer_b": "geography",
+      "common_clustered_nodes": 22982,
+      "ari": 0.5307030797224548
+    },
+    {
+      "layer_a": "history",
+      "layer_b": "administration",
+      "common_clustered_nodes": 5807,
+      "ari": 0.3080441129386799
+    },
+    {
+      "layer_a": "culture",
+      "layer_b": "geography",
+      "common_clustered_nodes": 15081,
+      "ari": 0.4032612119427126
+    },
+    {
+      "layer_a": "culture",
+      "layer_b": "administration",
+      "common_clustered_nodes": 4381,
+      "ari": 0.30566870426113196
+    },
+    {
+      "layer_a": "geography",
+      "layer_b": "administration",
+      "common_clustered_nodes": 7734,
+      "ari": 0.31907740363429427
+    }
+  ]
+}

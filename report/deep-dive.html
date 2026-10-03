@@ -1,0 +1,557 @@
+<title>Who Cites Whom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~68ch) on warm map paper; figures break out wider on "plates" that keep
+   the charts' own paper colour in both themes. Accent = the charts' cartographic blue. */
+:root {
+  --bg: #faf7f2;
+  --ink: #1f1d1a;
+  --ink-2: #4f4b44;
+  --ink-3: #847f75;
+  --rule: #e2dacd;
+  --tint: #f2ece2;
+  --accent: #1c5cab;
+  --plate: #faf7f2;
+  --plate-edge: #e2dacd;
+  --f-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --measure: 68ch;
+  --wide: 1080px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17191c; --ink: #ecebe6; --ink-2: #c1bdb4; --ink-3: #8f8b83; --rule: #2e3238;
+    --tint: #20242a; --accent: #8db8ee; --plate: #faf7f2; --plate-edge: #3a3f46; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #17191c; --ink: #ecebe6; --ink-2: #c1bdb4; --ink-3: #8f8b83; --rule: #2e3238;
+  --tint: #20242a; --accent: #8db8ee; --plate: #faf7f2; --plate-edge: #3a3f46; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: 1.0625rem; line-height: 1.62;
+  padding-inline: 20px; padding-block: 0 64px;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: var(--wide); margin-inline: auto; }
+.col { max-width: var(--measure); margin-inline: auto; }
+
+header.top { padding-block: 64px 28px; }
+.kicker { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 18px; }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1.02; letter-spacing: -.015em; margin: 0 0 18px; text-wrap: balance; }
+.dek { font-family: var(--f-display); font-size: clamp(1.15rem, 2.2vw, 1.4rem); line-height: 1.45; color: var(--ink-2); margin: 0; text-wrap: pretty; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border-block: 1px solid var(--rule); margin-block: 36px 8px; }
+.facts div { padding: 14px 14px 14px 0; }
+.facts b { display: block; font-family: var(--f-display); font-weight: 600; font-size: 1.7rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.facts span { font-size: .82rem; color: var(--ink-3); line-height: 1.35; display: block; margin-top: 4px; }
+
+h2 { font-family: var(--f-display); font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.05rem); line-height: 1.15; margin: 72px 0 6px; text-wrap: balance; display: flex; gap: .5em; align-items: baseline; }
+h2 .n { font-family: var(--f-mono); font-size: .8rem; font-weight: 500; color: var(--accent); letter-spacing: .04em; flex: none; }
+h3 { font-family: var(--f-body); font-weight: 600; font-size: 1rem; margin: 30px 0 4px; letter-spacing: .01em; }
+.lede { font-family: var(--f-display); font-size: 1.2rem; line-height: 1.5; color: var(--ink-2); margin: 0 0 18px; text-wrap: pretty; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+strong { font-weight: 600; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.num { font-variant-numeric: tabular-nums; }
+em.term { font-style: italic; }
+
+.brief { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; }
+.brief li { display: grid; grid-template-columns: 2.2em 1fr; gap: 6px; align-items: baseline; min-width: 0; }
+.brief li > span:first-child { font-family: var(--f-mono); font-size: .8rem; color: var(--accent); }
+
+nav.toc { margin-block: 40px 0; padding: 18px 0; border-top: 1px solid var(--rule); }
+nav.toc p { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 8px; }
+nav.toc ol { margin: 0; padding: 0; list-style: none; columns: 2 16rem; column-gap: 32px; font-size: .95rem; counter-reset: t; }
+nav.toc li { counter-increment: t; break-inside: avoid; padding-block: 2px; }
+nav.toc li::before { content: counter(t, decimal-leading-zero) "  "; font-family: var(--f-mono); font-size: .75rem; color: var(--ink-3); }
+nav.toc a { color: var(--ink); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+
+figure { margin: 30px auto 34px; max-width: var(--wide); }
+figure.narrow { max-width: 760px; }
+figure.portrait { max-width: 640px; }
+.plate { background: var(--plate); border: 1px solid var(--plate-edge); border-radius: 3px; padding: 10px; }
+.plate img { display: block; width: 100%; height: auto; }
+figcaption { max-width: var(--measure); margin: 10px auto 0; font-size: .86rem; line-height: 1.5; color: var(--ink-3); }
+figcaption b { color: var(--ink-2); font-weight: 600; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; max-width: var(--wide); margin: 30px auto; }
+.pair figure { margin: 0; min-width: 0; }
+
+.tables { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; max-width: 900px; margin: 22px auto 30px; }
+.tables > div { min-width: 0; }
+.tscroll { overflow-x: auto; margin: 18px 0 26px; }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; font-variant-numeric: tabular-nums; }
+caption { text-align: left; font-weight: 600; font-size: .9rem; padding-bottom: 6px; color: var(--ink); caption-side: top; }
+th { text-align: left; font-weight: 500; color: var(--ink-3); font-size: .74rem; letter-spacing: .05em; text-transform: uppercase; border-bottom: 1px solid var(--ink); padding: 6px 8px 5px 0; white-space: nowrap; }
+td { border-bottom: 1px solid var(--rule); padding: 6px 8px 6px 0; vertical-align: top; }
+td.r, th.r { text-align: right; }
+td small { color: var(--ink-3); font-size: .8em; }
+tr.hl td { background: var(--tint); }
+
+.note { background: var(--tint); border-radius: 3px; padding: 14px 18px; font-size: .93rem; color: var(--ink-2); margin: 22px 0; }
+.note p:last-child { margin-bottom: 0; }
+.note b { color: var(--ink); }
+.quote { font-family: var(--f-display); font-style: italic; font-size: 1.05rem; color: var(--ink-2); border-left: 2px solid var(--accent); padding: 2px 0 2px 16px; margin: 18px 0; }
+.quote span { font-style: normal; font-family: var(--f-body); font-size: .8rem; color: var(--ink-3); display: block; margin-top: 4px; }
+.bars { display: grid; gap: 6px; margin: 16px 0 22px; font-size: .88rem; }
+.bars div { display: grid; grid-template-columns: minmax(9.5rem, 15rem) 1fr 3.4rem; gap: 10px; align-items: center; min-width: 0; }
+.bars i { display: block; height: 10px; background: var(--accent); border-radius: 0 2px 2px 0; }
+.bars i.free { background: var(--rule); }
+.bars span:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+code { font-family: var(--f-mono); font-size: .85em; background: var(--tint); padding: 1px 5px; border-radius: 2px; }
+footer { border-top: 1px solid var(--rule); margin-top: 72px; padding-top: 20px; font-size: .85rem; color: var(--ink-3); }
+@media (max-width: 560px) {
+  body { font-size: 1rem; }
+  .bars div { grid-template-columns: 8.5rem 1fr 3rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+</style>
+
+<div class="page">
+<header class="top col">
+  <p class="kicker">Network study · French Wikipedia · 34,735 commune articles</p>
+  <h1>Who Cites Whom</h1>
+  <p class="dek">How the Wikipedia articles of French communes mention one another: who does the citing, who gets cited, how far citations travel, and which parts of an article produce them.</p>
+
+  <div class="facts">
+    <div><b class="num">530,535</b><span>mentions of one commune in another's article body</span></div>
+    <div><b class="num">291,584</b><span>directed ties between 34,735 metropolitan communes</span></div>
+    <div><b class="num">9.7 km</b><span>median distance of a mention</span></div>
+    <div><b class="num">71%</b><span>of mentions point to a larger town</span></div>
+    <div><b class="num">29%</b><span>of links sit in formulaic, largely bot-written paragraphs</span></div>
+  </div>
+
+  <ul class="brief">
+    <li><span>01</span><span><strong>Citing is local.</strong> Half of all mentions point to a commune less than 10 km away, three quarters to one less than 25 km away. The chance that one article cites another falls from about 1 in 3 for communes under 5 km apart to about 1 in 100,000 beyond 300 km.</span></li>
+    <li><span>02</span><span><strong>Small places write, larger places are written about.</strong> Communes under 2,000 inhabitants make up 84% of the network and write 69% of the mentions, but receive only 43%. Towns over 10,000 inhabitants make up 2.8% of the network and receive a third of all mentions.</span></li>
+    <li><span>03</span><span><strong>Administrative seats are cited far beyond their size.</strong> At equal population, a sub-prefecture receives about 10 times more mentions than an ordinary commune, a prefecture about 17 times more and a regional capital about 32 times more. The 320 seats are 0.9% of communes and receive 29% of all mentions.</span></li>
+    <li><span>04</span><span><strong>How much an article cites depends on its length, not on its town.</strong> Article length explains 61% of the variation in how many mentions an article makes. Once length is known, population adds nothing.</span></li>
+    <li><span>05</span><span><strong>Paris is the only national reference.</strong> Paris is mentioned by 8% of all commune articles and receives 22% of all mentions that travel more than 300 km. Beyond 200 km, about 5% of communes still mention Paris; no other city exceeds 1%. Even so, Paris accounts for just 1.7% of all mentions.</span></li>
+    <li><span>06</span><span><strong>Much of the structure is written by templates.</strong> Paragraphs on rivers, the nearest weather station, neighbouring communes, distances to reference towns and INSEE urban areas hold 29% of all links to communes. 97% of articles contain at least one such link.</span></li>
+    <li><span>07</span><span><strong>The network splits into 17 compact communities</strong> that keep 92% of mentions inside. Each is polycentric: its leading city absorbs only about 5% of the mentions made within it.</span></li>
+  </ul>
+
+  <nav class="toc" aria-label="Contents">
+    <p>Contents</p>
+    <ol>
+      <li><a href="#data">What counts as a citation</a></li>
+      <li><a href="#glance">The network at a glance</a></li>
+      <li><a href="#citers">Who does the citing</a></li>
+      <li><a href="#cited">Who gets cited</a></li>
+      <li><a href="#hierarchy">Up the urban hierarchy</a></li>
+      <li><a href="#distance">How far citations travel</a></li>
+      <li><a href="#reciprocity">Who cites back</a></li>
+      <li><a href="#sections">Where in the article, and who wrote it</a></li>
+      <li><a href="#paris">Paris and the large cities</a></li>
+      <li><a href="#communities">Communities, hubs and bridges</a></li>
+      <li><a href="#ties">The strongest ties</a></li>
+      <li><a href="#limits">Limits of the data</a></li>
+    </ol>
+  </nav>
+</header>
+
+<!-- ============================================================ 1 -->
+<section class="col" id="data">
+  <h2><span class="n">01</span>What counts as a citation</h2>
+  <p class="lede">A citation is a mention of commune B in the running text of commune A's French Wikipedia article.</p>
+  <p>The source is the latest revision of every commune article in the corpus (35,118 pages). Each page is matched to its official INSEE commune code. Former communes that now belong to a merged commune are folded into it. Overseas communes and the 101 non-commune pages in the corpus (mostly département articles) are dropped. That leaves <strong class="num">34,735</strong> metropolitan communes, Corsica included. Population, département and région come from the official geo.api.gouv.fr reference; the list of prefectures and sub-prefectures comes from the INSEE 2025 geographic code.</p>
+  <p>Only article prose counts. Before counting, everything that is not running text is removed:</p>
+  <ul>
+    <li>the infobox and every other template (navigation boxes, "neighbouring communes" boxes, coordinates, citation templates);</li>
+    <li>all tables, footnotes and references, image galleries and image captions;</li>
+    <li>categories and links to other language editions;</li>
+    <li>everything after the first end-matter heading (<em>Voir aussi</em>, <em>Notes et références</em>, <em>Bibliographie</em>, <em>Liens externes</em>…).</li>
+  </ul>
+  <p>In the remaining text, a mention of B is either a wikilink to B's article (directly or through a redirect: 36,000 redirects are resolved) or a later plain-text repeat of B's name in an article that links to B at least once. Links make up <strong>74%</strong> of mentions, plain-text repeats 26%. Self-mentions are dropped, and so are names that are part of the citing commune's own name ("Cormeilles" in Cormeilles-en-Parisis).</p>
+  <p>The result is a directed, weighted network: <strong class="num">291,584</strong> ties and <strong class="num">530,535</strong> mentions. Most ties are thin: 69% consist of a single mention, and the heaviest carries 270.</p>
+</section>
+
+<!-- ============================================================ 2 -->
+<section id="glance">
+  <div class="col">
+    <h2><span class="n">02</span>The network at a glance</h2>
+    <p class="lede">Every commune is a dot at its real position; lines are the strongest 16% of ties.</p>
+    <p>The picture is dominated by short lines between neighbours, with star-shaped bursts around regional centres such as Bordeaux, Niort, Lyon, Toulouse and Blois. Only a thin web of long lines crosses the country, most of them pointing to Paris. Colours show 17 communities found from the citation ties alone; <a href="#communities">section 10</a> describes them.</p>
+    <p>The typical commune names 6 other communes (mean 8.4) and is named by 3. 4,665 communes (13%) are never mentioned by any other commune article; their median population is 235, against 517 for communes that are mentioned. 163 articles mention no other commune at all.</p>
+  </div>
+  <figure class="portrait">
+    <div class="plate"><img src="web/france_city_citation_network_linkedin.jpg" alt="Map of metropolitan France with 34,735 communes as dots coloured by citation community, and the strongest citation ties drawn as curved lines. Dense short ties everywhere; star patterns around regional centres; long lines converge on Paris." loading="lazy"></div>
+    <figcaption><b>The citation network of French communes.</b> Dot size grows with total citation activity; lines are the 45,565 directed ties with at least 3 mentions, curving clockwise from the citing to the cited commune. All 291,584 ties are used in the analysis.</figcaption>
+  </figure>
+</section>
+
+<!-- ============================================================ 3 -->
+<section id="citers">
+  <div class="col">
+    <h2><span class="n">03</span>Who does the citing</h2>
+    <p class="lede">The amount of citing is set by how much has been written about a commune, not by how large it is.</p>
+    <p>The number of mentions an article makes rises almost one-for-one with its length (rank correlation 0.76). In a regression on both length and population, a 10% longer body text brings about 13% more mentions, and population has no effect (coefficient −0.006). Length alone explains 61% of the variation. The median article body is about 10,600 characters and contains 8.7 mentions of other communes per 10,000 characters.</p>
+    <p>Population matters only because larger towns get longer articles. Articles about communes under 200 inhabitants make a median of 6 mentions; articles about the 11 cities over 200,000 make a median of 140, because their bodies are about 20 times longer.</p>
+  </div>
+  <figure class="narrow">
+    <div class="plate"><img src="web/who_cites_length.jpg" alt="Log-log scatter of article body length against mentions made, with a rising median line." loading="lazy"></div>
+    <figcaption><b>Longer articles cite more communes.</b> Each dot is an article (random sample of 12,000); the line is the median within length bins.</figcaption>
+  </figure>
+  <div class="col">
+    <p>The most prolific citers are small communes whose volunteers wrote long local histories. Lumeau (Eure-et-Loir, 138 inhabitants) has a 264,000-character article dominated by the 1870 battles around Loigny and Orléans. It makes 990 mentions, including 270 of Orléans, the heaviest tie in the network.</p>
+    <div class="tscroll">
+      <table>
+        <caption>Articles that make the most mentions</caption>
+        <thead><tr><th>Commune</th><th>Département</th><th class="r">Population</th><th class="r">Mentions made</th><th class="r">Communes named</th><th class="r">Body (k chars)</th></tr></thead>
+        <tbody>
+          <tr><td>Lumeau</td><td>Eure-et-Loir</td><td class="r">138</td><td class="r">990</td><td class="r">121</td><td class="r">264</td></tr>
+          <tr><td>Neublans-Abergement</td><td>Jura</td><td class="r">536</td><td class="r">341</td><td class="r">96</td><td class="r">53</td></tr>
+          <tr><td>Breuillet</td><td>Charente-Maritime</td><td class="r">3,058</td><td class="r">323</td><td class="r">39</td><td class="r">122</td></tr>
+          <tr><td>Genlis</td><td>Côte-d'Or</td><td class="r">5,093</td><td class="r">305</td><td class="r">80</td><td class="r">131</td></tr>
+          <tr><td>Étaules</td><td>Charente-Maritime</td><td class="r">2,857</td><td class="r">295</td><td class="r">45</td><td class="r">115</td></tr>
+          <tr><td>Saint-Georges-de-Didonne</td><td>Charente-Maritime</td><td class="r">5,092</td><td class="r">276</td><td class="r">66</td><td class="r">132</td></tr>
+          <tr><td>Fontenay-Trésigny</td><td>Seine-et-Marne</td><td class="r">5,994</td><td class="r">274</td><td class="r">76</td><td class="r">148</td></tr>
+          <tr><td>Jaligny-sur-Besbre</td><td>Allier</td><td class="r">559</td><td class="r">262</td><td class="r">103</td><td class="r">160</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Three of the top eight are neighbouring communes on the Charente-Maritime coast (Breuillet, Étaules, Saint-Georges-de-Didonne). Their articles are long and cite one another heavily, which shows how a few active local editors can create a dense cluster of cross-citing articles.</p>
+  </div>
+</section>
+
+<!-- ============================================================ 4 -->
+<section id="cited">
+  <div class="col">
+    <h2><span class="n">04</span>Who gets cited</h2>
+    <p class="lede">Being cited is far more unequal than citing, and it rewards administrative status more than size.</p>
+    <p>Mentions received are highly concentrated (Gini 0.76, against 0.54 for mentions made). The top 1% of communes, 347 of them, receive 33% of all mentions. Population matters, but less than one might expect: doubling a commune's population raises its expected mentions by about 33%, and population alone explains only 23% of the variation.</p>
+    <p>Administrative status matters much more. Adding the commune's role to the same regression gives, at equal population:</p>
+  </div>
+  <div class="tables">
+    <div>
+      <table>
+        <caption>Mentions received, relative to an ordinary commune of the same population</caption>
+        <thead><tr><th>Status</th><th class="r">Count</th><th class="r">Multiplier</th><th class="r">Share of all mentions</th></tr></thead>
+        <tbody>
+          <tr><td>Ordinary commune</td><td class="r">34,415</td><td class="r">1×</td><td class="r">71.3%</td></tr>
+          <tr><td>Sub-prefecture</td><td class="r">224</td><td class="r">9.8×</td><td class="r">11.6%</td></tr>
+          <tr><td>Prefecture</td><td class="r">83</td><td class="r">16.8×</td><td class="r">10.8%</td></tr>
+          <tr><td>Regional capital</td><td class="r">13</td><td class="r">32.4×</td><td class="r">6.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col">
+    <p>Seats are where the département's roads, courts, markets and history converge, so prose about the surrounding countryside keeps returning to them. Templates reinforce the effect: the standard "distance to reference towns" paragraph and the INSEE urban-area paragraph usually name the local prefecture or sub-prefecture (<a href="#sections">section 8</a>). The multipliers therefore mix real centrality with editorial convention.</p>
+  </div>
+  <figure class="narrow">
+    <div class="plate"><img src="web/who_is_cited_population.jpg" alt="Log-log scatter of population against mentions received. Administrative seats sit far above the population trend line; Paris, Lyon, Arras and Foix are labelled above it, Paris suburbs such as Villepinte and Herblay-sur-Seine below it." loading="lazy"></div>
+    <figcaption><b>Mentions received against population.</b> The dashed line is what population alone predicts. Blue dots are administrative seats. Circled: the most over- and under-cited communes discussed below.</figcaption>
+  </figure>
+  <div class="col">
+    <h3>Over-cited and under-cited</h3>
+    <p>Comparing each commune with what its population predicts gives two very different lists.</p>
+  </div>
+  <div class="tables">
+    <div>
+      <table>
+        <caption>Cited far more than population predicts</caption>
+        <thead><tr><th>Commune</th><th class="r">Pop.</th><th class="r">Received</th><th class="r">× expected</th></tr></thead>
+        <tbody>
+          <tr><td>Saint-Pierre-de-Frugie <small>Dordogne</small></td><td class="r">520</td><td class="r">504</td><td class="r">84</td></tr>
+          <tr><td>Licques <small>Pas-de-Calais</small></td><td class="r">1,679</td><td class="r">641</td><td class="r">66</td></tr>
+          <tr><td>Arras <small>prefecture</small></td><td class="r">42,875</td><td class="r">2,212</td><td class="r">59</td></tr>
+          <tr><td>Lamothe-Montravel <small>Dordogne</small></td><td class="r">1,443</td><td class="r">520</td><td class="r">57</td></tr>
+          <tr><td>Mont-Louis <small>Pyrénées-Orientales</small></td><td class="r">153</td><td class="r">203</td><td class="r">56</td></tr>
+          <tr><td>Foix <small>prefecture</small></td><td class="r">9,934</td><td class="r">1,113</td><td class="r">55</td></tr>
+          <tr><td>Saint-Pol-sur-Ternoise <small>Pas-de-Calais</small></td><td class="r">4,677</td><td class="r">782</td><td class="r">53</td></tr>
+          <tr><td>Paris</td><td class="r">2.1 M</td><td class="r">9,149</td><td class="r">49</td></tr>
+          <tr><td>Mirecourt <small>Vosges</small></td><td class="r">4,700</td><td class="r">723</td><td class="r">48</td></tr>
+          <tr><td>Blois <small>prefecture</small></td><td class="r">47,219</td><td class="r">1,881</td><td class="r">48</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table>
+        <caption>Cited far less than population predicts</caption>
+        <thead><tr><th>Commune</th><th class="r">Pop.</th><th class="r">Received</th><th class="r">Expected</th></tr></thead>
+        <tbody>
+          <tr><td>Herblay-sur-Seine <small>Val-d'Oise</small></td><td class="r">31,779</td><td class="r">8</td><td class="r">32</td></tr>
+          <tr><td>Vitrolles <small>Bouches-du-Rhône</small></td><td class="r">36,758</td><td class="r">9</td><td class="r">34</td></tr>
+          <tr><td>Saint-Laurent-du-Var <small>Alpes-Maritimes</small></td><td class="r">32,172</td><td class="r">10</td><td class="r">32</td></tr>
+          <tr><td>Villiers-le-Bel <small>Val-d'Oise</small></td><td class="r">30,053</td><td class="r">10</td><td class="r">31</td></tr>
+          <tr><td>Le Perreux-sur-Marne <small>Val-de-Marne</small></td><td class="r">35,260</td><td class="r">12</td><td class="r">33</td></tr>
+          <tr><td>Villepinte <small>Seine-Saint-Denis</small></td><td class="r">41,470</td><td class="r">13</td><td class="r">36</td></tr>
+          <tr><td>Maisons-Alfort <small>Val-de-Marne</small></td><td class="r">56,799</td><td class="r">16</td><td class="r">41</td></tr>
+          <tr><td>Fontenay-sous-Bois <small>Val-de-Marne</small></td><td class="r">53,757</td><td class="r">17</td><td class="r">40</td></tr>
+          <tr><td>Champigny-sur-Marne <small>Val-de-Marne</small></td><td class="r">78,072</td><td class="r">23</td><td class="r">47</td></tr>
+          <tr><td>Vitry-sur-Seine <small>Val-de-Marne</small></td><td class="r">93,963</td><td class="r">26</td><td class="r">51</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col">
+    <p>The under-cited list is made up almost entirely of <strong>suburbs of large metropolitan areas</strong>, mostly around Paris. These towns have many inhabitants, but their surroundings are other suburbs whose articles refer to Paris or to the département seat instead. Few small rural neighbours are left to cite them.</p>
+    <p>The over-cited list mixes two things. Administrative seats appear for the reasons above. The small towns get most of their mentions from standard wording repeated across the articles of their area. Saint-Pol-sur-Ternoise gets 91% of its mentions from Géographie sections, Mirecourt 55% from <em>Population et société</em> sections, and Mont-Louis most of its mentions from lead paragraphs and Géographie. The clearest case is a single sentence copied into hundreds of articles. Saint-Pierre-de-Frugie and Lamothe-Montravel are the highest and lowest points of the Dordogne, and nearly every Dordogne commune article carries the same sentence:</p>
+    <p class="quote">« Le département de la Dordogne se présente comme un vaste plateau incliné du nord-est (…à Saint-Pierre-de-Frugie) au sud-ouest (…à Lamothe-Montravel). »<span>Antonne-et-Trigonant, Géographie, one of ~500 near-identical copies</span></p>
+    <p>Licques is a similar case: Pas-de-Calais articles describe their landscape as part of the "coteaux calaisiens et pays de Licques".</p>
+  </div>
+</section>
+
+<!-- ============================================================ 5 -->
+<section id="hierarchy">
+  <div class="col">
+    <h2><span class="n">05</span>Up the urban hierarchy</h2>
+    <p class="lede">Citations flow from small places to larger ones and rarely come back down.</p>
+    <p><strong>71%</strong> of all mentions point to a commune larger than the citing one; 31% point to a commune at least ten times larger, and only 3.6% to one at least ten times smaller. The flow is so one-directional that the size classes split into writers and the written-about:</p>
+  </div>
+  <div class="tscroll" style="max-width:900px;margin-inline:auto">
+    <table>
+      <thead><tr><th>Population</th><th class="r">Communes</th><th class="r">Share of communes</th><th class="r">Mentions made</th><th class="r">Mentions received</th><th class="r">Received per commune</th></tr></thead>
+      <tbody>
+        <tr><td>under 200</td><td class="r">8,799</td><td class="r">25.3%</td><td class="r">16.3%</td><td class="r">8.6%</td><td class="r">5</td></tr>
+        <tr><td>200–500</td><td class="r">9,449</td><td class="r">27.2%</td><td class="r">20.5%</td><td class="r">11.5%</td><td class="r">6</td></tr>
+        <tr><td>500–2,000</td><td class="r">11,090</td><td class="r">31.9%</td><td class="r">31.9%</td><td class="r">23.0%</td><td class="r">11</td></tr>
+        <tr><td>2,000–10,000</td><td class="r">4,409</td><td class="r">12.7%</td><td class="r">21.6%</td><td class="r">24.2%</td><td class="r">29</td></tr>
+        <tr class="hl"><td>10,000–50,000</td><td class="r">865</td><td class="r">2.5%</td><td class="r">7.5%</td><td class="r">17.9%</td><td class="r">110</td></tr>
+        <tr class="hl"><td>50,000–200,000</td><td class="r">112</td><td class="r">0.3%</td><td class="r">1.8%</td><td class="r">9.2%</td><td class="r">437</td></tr>
+        <tr class="hl"><td>over 200,000</td><td class="r">11</td><td class="r">0.03%</td><td class="r">0.3%</td><td class="r">5.6%</td><td class="r">2,714</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <figure>
+    <div class="plate"><img src="web/hierarchy.jpg" alt="Left: heatmap of citations between population classes, observed divided by expected; blue along the diagonal and towards larger cited towns, red where large towns would cite small ones. Right: bar chart of shares of mentions made and received by population class." loading="lazy"></div>
+    <figcaption><b>Who cites whom by size.</b> Left: mentions between population classes divided by what each class's overall activity would predict. Blue means more than expected. Right: each class's share of all mentions made and received.</figcaption>
+  </figure>
+  <div class="col">
+    <p>The heatmap adds a second pattern. Communes cite <strong>their own size class</strong> more than expected at both ends of the scale. The smallest villages cite each other 2.8 times more than chance, because their neighbours are other small villages. Cities over 200,000 cite each other 5.2 times more than chance. Large cities almost never mention small villages: 0.1 times what their activity would predict. Their articles talk about other cities, not about the countryside around them.</p>
+  </div>
+</section>
+
+<!-- ============================================================ 6 -->
+<section id="distance">
+  <div class="col">
+    <h2><span class="n">06</span>How far citations travel</h2>
+    <p class="lede">Most mentions do not leave the canton.</p>
+    <p>Weighted by mentions, the median citation covers <strong>9.7 km</strong>. 51% of mentions point to a commune less than 10 km away, 76% to one less than 25 km away and 90% to one less than 60 km away; only 3% travel more than 200 km. For comparison, two communes picked at random are 393 km apart on median, and only 1.6% of random pairs are under 50 km apart, against 84% of actual ties.</p>
+  </div>
+  <figure class="narrow">
+    <div class="plate"><img src="web/distance_decay.jpg" alt="Log-log line chart: probability that commune A cites commune B falls from about 0.3 at 2 km to about 0.00001 beyond 300 km, flattening at long distances." loading="lazy"></div>
+    <figcaption><b>Distance decay.</b> Share of commune pairs in each distance band that are linked by a citation. The curve flattens beyond about 300 km, where the remaining ties are mostly to Paris and a few other large cities.</figcaption>
+  </figure>
+  <div class="col">
+    <p>About 29% of pairs under 5 km apart are tied, 2.6% of pairs 10–20 km apart, 0.07% at 50–75 km, and about 0.001% beyond 300 km. The decay is steep up to 200 km and then flattens: beyond that range, distance hardly matters any more and only national fame does.</p>
+    <p>How far a commune's citations come from depends on its size. Villages under 200 inhabitants are cited from a median of 5 km away, towns of 10,000–50,000 from 15 km, cities of 50,000–200,000 from 26 km, and cities over 200,000 from 47 km.</p>
+    <h3>Reach</h3>
+    <p>The median distance of a commune's incoming citations measures its <em>reach</em>. Among communes cited by at least 60 others, Paris has a reach of 86 km and Marseille 72 km. The rest of the top of the list is mostly <strong>river geography</strong>. Source-Seine, where the Seine rises, is cited from a median of 344 km by communes along the river. Charenton-le-Pont (155 km), where the Marne joins the Seine, and Le Châtelet-sur-Meuse (138 km), source of the Meuse, work the same way.</p>
+    <p>At the other extreme, large suburbs have almost no reach: Montreuil (112,000 inhabitants) is cited from a median of 2.9 km, Villeurbanne from 3.9 km, Saint-Denis from 5.6 km. Even Lille, with 3,000 mentions, is cited mostly from its own metropolitan area (15 km).</p>
+  </div>
+  <figure class="portrait">
+    <div class="plate"><img src="web/reach_map.jpg" alt="Map of France with communes cited by at least 10 others; dot size is mentions received and darker blue means cited from farther away. Paris, the Seine and Meuse source towns and a few river confluences are darkest." loading="lazy"></div>
+    <figcaption><b>Reach.</b> Size: mentions received. Colour: citation-weighted median distance of the citing communes.</figcaption>
+  </figure>
+</section>
+
+<!-- ============================================================ 7 -->
+<section id="reciprocity">
+  <div class="col">
+    <h2><span class="n">07</span>Who cites back</h2>
+    <p class="lede">30% of ties are returned; between near neighbours, most are.</p>
+    <p>When A mentions B, B mentions A in 29.7% of cases (25% when weighted by mentions). Reciprocity depends on distance and on how alike the two communes are. 61% of ties between communes less than 5 km apart are returned, against 8% beyond 50 km. 39% of ties between communes of similar size are returned, against 3% when one is over 100 times larger than the other. A village names its prefecture, but the prefecture's article does not name the village.</p>
+  </div>
+  <figure>
+    <div class="plate"><img src="web/reciprocity.jpg" alt="Two bar charts: share of ties reciprocated falls from 61% under 5 km to about 8% beyond 50 km, and from 39% for similar-sized pairs to 3% for pairs with a population ratio over 100." loading="lazy"></div>
+    <figcaption><b>Reciprocity by distance (left) and by population ratio (right).</b></figcaption>
+  </figure>
+  <div class="col">
+    <div class="tscroll">
+      <table>
+        <caption>The strongest mutual ties (mentions each way)</caption>
+        <thead><tr><th>Pair</th><th class="r">A → B</th><th class="r">B → A</th><th class="r">Distance</th></tr></thead>
+        <tbody>
+          <tr><td>Carling ↔ L'Hôpital <small>Moselle</small></td><td class="r">42</td><td class="r">52</td><td class="r">1 km</td></tr>
+          <tr><td>Arvert ↔ La Tremblade <small>Charente-Maritime</small></td><td class="r">51</td><td class="r">34</td><td class="r">3 km</td></tr>
+          <tr><td>L'Isle-Adam ↔ Parmain <small>Val-d'Oise</small></td><td class="r">31</td><td class="r">32</td><td class="r">2 km</td></tr>
+          <tr><td>Buissoncourt ↔ Haraucourt <small>Meurthe-et-Moselle</small></td><td class="r">28</td><td class="r">41</td><td class="r">2 km</td></tr>
+          <tr><td>Gémozac ↔ Pons <small>Charente-Maritime</small></td><td class="r">35</td><td class="r">26</td><td class="r">10 km</td></tr>
+          <tr><td>La Grave ↔ Villar-d'Arêne <small>Hautes-Alpes</small></td><td class="r">37</td><td class="r">24</td><td class="r">2 km</td></tr>
+          <tr><td>Arvert ↔ Étaules <small>Charente-Maritime</small></td><td class="r">23</td><td class="r">61</td><td class="r">2 km</td></tr>
+          <tr><td>Caudan ↔ Lanester <small>Morbihan</small></td><td class="r">22</td><td class="r">22</td><td class="r">5 km</td></tr>
+          <tr><td>Corrençon-en-Vercors ↔ Villard-de-Lans <small>Isère</small></td><td class="r">32</td><td class="r">21</td><td class="r">5 km</td></tr>
+          <tr><td>Fréjus ↔ Saint-Raphaël <small>Var</small></td><td class="r">21</td><td class="r">28</td><td class="r">3 km</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The strongest mutual ties are between twin communes that share a history, an industry or a valley. Carling and L'Hôpital share a coal-mining and chemical-plant history. L'Isle-Adam and Parmain face each other across the Oise. La Grave and Villar-d'Arêne share a mountain pass, and Fréjus and Saint-Raphaël are a single urban area.</p>
+  </div>
+</section>
+
+<!-- ============================================================ 8 -->
+<section id="sections">
+  <div class="col">
+    <h2><span class="n">08</span>Where in the article, and who wrote it</h2>
+    <p class="lede">Geography paragraphs produce most citations; history and biography produce the long-distance ones.</p>
+    <p>French commune articles follow a standard outline, so each mention can be traced to its section. <strong>Géographie</strong> alone holds 44% of all mentions and <strong>Histoire</strong> another 24%. The two differ in reach. Geography mentions point to communes a median of 9 km away, and only 3% go beyond 100 km. Toponymy sections compare place names with distant homonyms (median 26 km, 26% beyond 100 km). <em>Personnalités liées à la commune</em> sections link people to the cities where they were born, studied or worked (median 28 km, 24% beyond 100 km, 7% to Paris).</p>
+  </div>
+  <figure>
+    <div class="plate"><img src="web/sections.jpg" alt="Three bar charts by article section: share of mentions (Geography 44%, History 24%), median distance (Personalities 28 km, Toponymy 26 km, others 8–12 km), and share of mentions to communes over 100 km away (Toponymy 26%, Personalities 24%, Culture 13%)." loading="lazy"></div>
+    <figcaption><b>Mentions by article section.</b> Sections are grouped from their headings; "Lead paragraph" is the text before the first heading.</figcaption>
+  </figure>
+  <div class="col">
+    <h3>Templates write a large share of the network</h3>
+    <p>Many French commune articles have been filled out by bots and semi-automated campaigns. These add the same paragraph to every article in a département or in the whole country, changing only the names and numbers. The two most common:</p>
+    <p class="quote">« …la température moyenne annuelle observée sur la station météorologique de Météo-France la plus proche, sur la commune de <u>Lesquin</u>… »<span>Climate paragraph, here in the Lannoy article</span></p>
+    <p class="quote">« …Incourt est une commune située, à vol d'oiseau, à … de la commune d'<u>Hesdin-la-Forêt</u>, à … de la commune de <u>Saint-Pol-sur-Ternoise</u>… »<span>Distance paragraph, Pas-de-Calais</span></p>
+    <p>To measure their weight, every paragraph of every article was classified by its wording, and links to commune articles were counted in each type:</p>
+    <div class="bars" role="list" aria-label="Share of links to communes by paragraph type">
+      <div role="listitem"><span>Free prose</span><i class="free" style="width:71.2%"></i><span>71.2%</span></div>
+      <div role="listitem"><span>Rivers and hydrography</span><i style="width:11.7%"></i><span>11.7%</span></div>
+      <div role="listitem"><span>Climate (nearest weather station)</span><i style="width:8.4%"></i><span>8.4%</span></div>
+      <div role="listitem"><span>Neighbouring communes</span><i style="width:3.8%"></i><span>3.8%</span></div>
+      <div role="listitem"><span>Distance to reference towns</span><i style="width:3.6%"></i><span>3.6%</span></div>
+      <div role="listitem"><span>INSEE urban typology</span><i style="width:1.3%"></i><span>1.3%</span></div>
+    </div>
+    <p>Together, these formulaic paragraph types hold <strong>29%</strong> of the 405,000 links to communes, and <strong>97%</strong> of articles contain at least one. Each type has its own favourite targets:</p>
+    <ul>
+      <li><strong>Climate paragraphs</strong> point to the commune that hosts the nearest Météo-France station: Ectot-lès-Baons (205 articles), Amnéville (163), Valenciennes, Tomblaine, Saint-Hilaire-sur-Helpe.</li>
+      <li><strong>Distance paragraphs</strong> point to reference towns, mostly seats: Toulouse (594), Amiens (565), Tarbes (451), Arras (411), Abbeville (356).</li>
+      <li><strong>Urban-area paragraphs</strong> name the INSEE <em>aire d'attraction</em>: Pau (442), Châlons-en-Champagne (219).</li>
+      <li><strong>River paragraphs</strong> name sources and confluences: Charenton-le-Pont (262), Le Châtelet-sur-Meuse, Saints-Geosmes (source of the Marne).</li>
+    </ul>
+    <p>A simple test finds the communes whose fame is mostly a product of templates. These are ordinary communes cited by at least 80 articles, more than 85% of the time in Géographie, from a single département in most cases. There are <strong>53</strong> of them, and they account for 6,796 ties (2.3% of the network). The list is headed by the two Dordogne extremes, Ectot-lès-Baons, La Ferté-Alais, Saint-Pol-sur-Ternoise and Avesnes-le-Comte.</p>
+    <div class="note">
+      <p><b>Why this matters.</b> Templates are written per département or per INSEE zone, so they pull the network towards administrative and statistical geography. Any comparison between citation communities and administrative units partly measures how Wikipedia's bots were configured, not only how places relate to one another.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ 9 -->
+<section id="paris">
+  <div class="col">
+    <h2><span class="n">09</span>Paris and the large cities</h2>
+    <p class="lede">Paris is not a dominant hub, but it is the only city cited from everywhere.</p>
+    <p>Paris receives 9,149 mentions from 2,797 commune articles: 8% of all communes, but only <strong>1.7%</strong> of all mentions. The ten largest cities together receive 5.3%. The network is not organised around Paris.</p>
+    <p>What sets Paris apart is how its pull changes with distance. 90% of communes within 25 km mention Paris and 54% at 25–50 km, falling to 19% at 50–100 km. Beyond 200 km the share stops falling and stays at about 5% all the way to the Pyrenees and the Mediterranean. No other city has that floor.</p>
+  </div>
+  <div class="tscroll" style="max-width:760px;margin-inline:auto">
+    <table>
+      <caption>Share of communes that mention each city, by distance from it</caption>
+      <thead><tr><th>City</th><th class="r">Citing articles</th><th class="r">within 50 km</th><th class="r">100–200 km</th><th class="r">beyond 300 km</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Paris</td><td class="r">2,797</td><td class="r">66%</td><td class="r">6.6%</td><td class="r">5.4%</td></tr>
+        <tr><td>Toulouse</td><td class="r">1,347</td><td class="r">71%</td><td class="r">10.8%</td><td class="r">0.3%</td></tr>
+        <tr><td>Lyon</td><td class="r">1,215</td><td class="r">51%</td><td class="r">5.1%</td><td class="r">1.0%</td></tr>
+        <tr><td>Bordeaux</td><td class="r">1,129</td><td class="r">59%</td><td class="r">8.8%</td><td class="r">0.5%</td></tr>
+        <tr><td>Strasbourg</td><td class="r">669</td><td class="r">53%</td><td class="r">3.8%</td><td class="r">0.3%</td></tr>
+        <tr><td>Lille</td><td class="r">582</td><td class="r">44%</td><td class="r">2.2%</td><td class="r">0.2%</td></tr>
+        <tr><td>Nantes</td><td class="r">551</td><td class="r">73%</td><td class="r">5.1%</td><td class="r">0.2%</td></tr>
+        <tr><td>Marseille</td><td class="r">518</td><td class="r">66%</td><td class="r">5.0%</td><td class="r">0.6%</td></tr>
+        <tr><td>Rennes</td><td class="r">489</td><td class="r">54%</td><td class="r">4.0%</td><td class="r">0.1%</td></tr>
+        <tr><td>Montpellier</td><td class="r">298</td><td class="r">42%</td><td class="r">2.0%</td><td class="r">0.1%</td></tr>
+        <tr><td>Nice</td><td class="r">194</td><td class="r">39%</td><td class="r">3.6%</td><td class="r">0.2%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <p>Paris receives <strong>22%</strong> of all mentions that travel more than 300 km. The next targets, Lyon (3.1%), Marseille (2.0%) and Bordeaux (1.8%), are far behind. Mentions of Paris come from every kind of section in roughly equal parts: Géographie 25%, Histoire 25%, Culture and heritage 20%, Urbanism 14%.</p>
+    <p>Toulouse is the strongest regional magnet: 11% of communes 100–200 km away mention it, more than for any other city, Paris included. Lille, Montpellier and Nice pull less than their size suggests: under 45% of communes within 50 km mention them, against two thirds or more for Paris, Marseille, Toulouse and Nantes.</p>
+  </div>
+  <figure class="portrait">
+    <div class="plate"><img src="web/paris_pull.jpg" alt="Choropleth of départements by share of communes mentioning Paris: above 90% in Essonne and the inner ring, 76% in Val-d'Oise, 43% in Yvelines, 25–31% in Oise and Seine-et-Marne, and under 16% everywhere else." loading="lazy"></div>
+    <figcaption><b>Share of each département's communes whose article mentions Paris.</b> Essonne 98%, the three inner-ring départements 92–95%, Val-d'Oise 76%, Yvelines 43%, Oise 31%, Seine-et-Marne 25%; everywhere else under 16%.</figcaption>
+  </figure>
+</section>
+
+<!-- ============================================================ 10 -->
+<section id="communities">
+  <div class="col">
+    <h2><span class="n">10</span>Communities, hubs and bridges</h2>
+    <p class="lede">The network falls into 17 compact, polycentric communities.</p>
+    <p>Community detection (Leiden) was run on the network after giving each commune one "vote" spread over the communes it cites, so that long articles and large cities do not drive the result. The resolution was chosen by a structural rule fixed in advance: the setting whose partition is most stable across random seeds. That rule gives <strong>17 communities</strong> with a modularity of 0.87, a high value for a network of this size. <strong>92%</strong> of all mentions stay inside a community, and members of the same community are 92 km apart on median, against 412 km for members of different communities.</p>
+    <p>The communities are polycentric. The most-cited commune of each community absorbs a median of only <strong>5%</strong> of the mentions made within it; Paris absorbs the most, 9%. The leading city is also the largest one in 11 of the 17 communities. In the others a historic or administrative centre leads over a larger neighbour: Bastia over Ajaccio, Blois over Angers, Rouen over Le Havre, Albi over Montauban.</p>
+    <div class="tscroll">
+      <table>
+        <caption>The 17 communities</caption>
+        <thead><tr><th>Named after</th><th class="r">Communes</th><th>Other main cities</th><th class="r">Leader's share</th></tr></thead>
+        <tbody>
+          <tr><td>Lille</td><td class="r">3,716</td><td>Amiens, Arras, Beauvais, Boulogne-sur-Mer</td><td class="r">4.6%</td></tr>
+          <tr><td>Rouen</td><td class="r">2,684</td><td>Caen, Dieppe, Le Havre, Coutances</td><td class="r">4.1%</td></tr>
+          <tr><td>Strasbourg</td><td class="r">2,656</td><td>Metz, Nancy, Mirecourt, Épinal</td><td class="r">4.3%</td></tr>
+          <tr><td>Lyon</td><td class="r">2,588</td><td>Grenoble, Mâcon, Chambéry, Bourg-en-Bresse</td><td class="r">7.9%</td></tr>
+          <tr><td>Bordeaux</td><td class="r">2,495</td><td>Poitiers, Angoulême, Royan, Saintes</td><td class="r">5.4%</td></tr>
+          <tr><td>Marseille</td><td class="r">2,275</td><td>Valence, Avignon, Montpellier, Nîmes</td><td class="r">2.7%</td></tr>
+          <tr><td>Paris</td><td class="r">2,178</td><td>Orléans, Versailles, Melun, Sens</td><td class="r">9.2%</td></tr>
+          <tr><td>Dijon</td><td class="r">2,091</td><td>Troyes, Auxerre, Autun, Nevers</td><td class="r">4.5%</td></tr>
+          <tr><td>Limoges</td><td class="r">1,957</td><td>Clermont-Ferrand, Vichy, Le Puy-en-Velay</td><td class="r">4.3%</td></tr>
+          <tr><td>Toulouse</td><td class="r">1,885</td><td>Foix, Perpignan, Carcassonne, Pamiers</td><td class="r">7.8%</td></tr>
+          <tr><td>Reims</td><td class="r">1,877</td><td>Châlons-en-Champagne, Épernay, Verdun</td><td class="r">5.6%</td></tr>
+          <tr><td>Nantes</td><td class="r">1,831</td><td>Rennes, Brest, Quimper, Vannes</td><td class="r">3.6%</td></tr>
+          <tr><td>Pau</td><td class="r">1,731</td><td>Tarbes, Bayonne, Auch, Lourdes</td><td class="r">5.7%</td></tr>
+          <tr><td>Blois</td><td class="r">1,680</td><td>Tours, Angers, Châteauroux, Bourges</td><td class="r">8.5%</td></tr>
+          <tr><td>Besançon</td><td class="r">1,630</td><td>Belfort, Vesoul, Montbéliard, Dole</td><td class="r">8.3%</td></tr>
+          <tr><td>Albi</td><td class="r">1,104</td><td>Montauban, Rodez, Cahors, Aurillac</td><td class="r">4.0%</td></tr>
+          <tr><td>Bastia</td><td class="r">349</td><td>Corte, Ajaccio, Calvi</td><td class="r">9.1%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Communities are named after their most-cited commune overall. "Leader's share" is the share of within-community mentions received by the community's most-cited commune inside the community, which is occasionally a different city: Troyes in the Dijon community, Clermont-Ferrand in the Limoges community, Valence in the Marseille community. The Marseille community is the least centred of all.</p>
+    <h3>Bridges</h3>
+    <p>Some communes split their ties evenly between several communities. Among communes with at least 150 mentions, the most balanced is Paris (participation coefficient 0.74, where 0 means all ties in one community). It is followed by towns that sit where communities meet: Angers, Thouars, Laval, Niort, Vernon, Montauban, Mende and Chaumont.</p>
+    <h3>And the administrative map?</h3>
+    <p>The communities look like old provinces and régions: Brittany with Nantes, Alsace-Lorraine, Champagne, Franche-Comté, Corsica. Measured against official units, the 17 communities agree best with today's 13 régions (adjusted Rand index 0.54) and the 22 pre-2016 régions (0.53), much less with the 96 départements (0.28). All three agreements are stronger than for equally compact partitions placed at random on the map (spatial permutation test, p ≤ 0.005).</p>
+    <p>The result depends on scale, though. At coarser resolutions the communities match today's régions best; at medium resolutions, the pre-2016 régions (agreement peaks at 0.61); at fine resolutions, the départements. Citation communities follow whichever administrative level has a matching size. Templates written per département push in the same direction (<a href="#sections">section 8</a>).</p>
+  </div>
+  <figure>
+    <div class="plate"><img src="web/citation_communities_vs_regions.jpg" alt="Four maps: A, the 17 citation communities; B, the 13 current régions; C, the 22 pre-2016 régions; D, communities with région and département borders overlaid." loading="lazy"></div>
+    <figcaption><b>Citation communities compared with administrative units.</b> Colours are not comparable across panels; within each panel, neighbouring units never share a colour.</figcaption>
+  </figure>
+</section>
+
+<!-- ============================================================ 11 -->
+<section id="ties" class="col">
+  <h2><span class="n">11</span>The strongest ties</h2>
+  <p class="lede">The heaviest ties connect suburbs to their central city.</p>
+  <div class="tscroll">
+    <table>
+      <thead><tr><th>Citing</th><th>Cited</th><th class="r">Mentions</th><th class="r">of which links</th><th class="r">Distance</th></tr></thead>
+      <tbody>
+        <tr><td>Lumeau</td><td>Orléans</td><td class="r">270</td><td class="r">3</td><td class="r">25 km</td></tr>
+        <tr><td>Anglet</td><td>Bayonne</td><td class="r">104</td><td class="r">9</td><td class="r">4 km</td></tr>
+        <tr><td>Villeurbanne</td><td>Lyon</td><td class="r">83</td><td class="r">2</td><td class="r">4 km</td></tr>
+        <tr><td>Saint-Georges-de-Didonne</td><td>Royan</td><td class="r">82</td><td class="r">27</td><td class="r">3 km</td></tr>
+        <tr><td>Villeneuve-d'Ascq</td><td>Lille</td><td class="r">73</td><td class="r">26</td><td class="r">5 km</td></tr>
+        <tr><td>Lumeau</td><td>Terminiers</td><td class="r">72</td><td class="r">6</td><td class="r">5 km</td></tr>
+        <tr><td>Neublans-Abergement</td><td>Rye</td><td class="r">71</td><td class="r">5</td><td class="r">9 km</td></tr>
+        <tr><td>Bionville</td><td>Allarmont</td><td class="r">68</td><td class="r">7</td><td class="r">0.3 km</td></tr>
+        <tr><td>Lescar</td><td>Pau</td><td class="r">66</td><td class="r">4</td><td class="r">6 km</td></tr>
+        <tr><td>Linselles</td><td>Lille</td><td class="r">64</td><td class="r">3</td><td class="r">11 km</td></tr>
+        <tr><td>Bellerive-sur-Allier</td><td>Vichy</td><td class="r">63</td><td class="r">7</td><td class="r">2 km</td></tr>
+        <tr><td>Genlis</td><td>Dijon</td><td class="r">63</td><td class="r">1</td><td class="r">16 km</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Apart from Lumeau's war history, the strongest ties are suburb-to-centre: Anglet to Bayonne, Villeurbanne to Lyon, Villeneuve-d'Ascq to Lille, Bellerive-sur-Allier to Vichy. A suburb's history is told through the city next door. The flow is one-way: Lyon's article does not return the favour to Villeurbanne.</p>
+  <p>Three other ties with many mentions and a single link (Agnetz → Ronquerolles, Val-d'Izé → Izé, Lacroix-sur-Meuse → Saint-Mihiel) are probably inflated. The citing commune has a hamlet or a local feature with the same name as the cited commune, and the plain-text count cannot tell them apart. They are left out of the table above.</p>
+</section>
+
+<!-- ============================================================ 12 -->
+<section id="limits" class="col">
+  <h2><span class="n">12</span>Limits of the data</h2>
+  <ul>
+    <li><strong>Wikipedia is not the territory.</strong> Mentions reflect what volunteers and bots chose to write. Long articles cite more, active local editors create dense clusters (the Charente-Maritime coast), and templates impose administrative geography. The network describes how French places are written about, not how they actually interact.</li>
+    <li><strong>Templates.</strong> 29% of links sit in formulaic paragraphs (section 8), and 62% of all mentions are in Géographie, Urbanisme, Administration or Population sections. A network built from narrative sections only (Histoire, Patrimoine, Personnalités) is sparser but keeps the same broad geography.</li>
+    <li><strong>Plain-text matching.</strong> Repeats of a linked name are counted only after the article links that commune. This still miscounts some homonyms: hamlets named like a nearby commune, "duc d'Orléans", "pays de Licques". Links alone (74% of mentions) are free of this problem.</li>
+    <li><strong>Community resolution.</strong> The rule fixed in advance (most seed-stable resolution, 5 seeds) is sensitive to small changes. A first run on slightly noisier data selected a finer resolution with 39 communities. Statements about communities should be read alongside the resolution sweep in <code>community_admin_comparison.csv</code>.</li>
+    <li><strong>One snapshot.</strong> Each article is taken at its latest revision in the corpus; edit histories were not analysed.</li>
+  </ul>
+</section>
+
+<footer class="col">
+  <p>Data: French Wikipedia commune articles (latest revision in the local corpus), INSEE Code officiel géographique 2025, geo.api.gouv.fr. Code and outputs: <code>reseau_citations/</code>: <code>extract_links.py</code> (body-text extraction), <code>analysis.py</code> (network, communities, tests, maps), <code>who_cites_whom.py</code> (this report's statistics) and <code>template_audit.py</code> (paragraph types). Random seed 20261002.</p>
+</footer>
+</div>

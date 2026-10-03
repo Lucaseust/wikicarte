@@ -1,0 +1,37 @@
+community,size,dominant_region,pct_dominant_region,n_regions,dominant_old_region,pct_dominant_old_region,dominant_department,pct_dominant_department,n_departments,name,median_pairwise_km,centroid_lat,centroid_lon,radius_median_km,radius_p90_km,n_pockets,n_pockets_ge5,share_main_pocket
+0,2155,Hauts-de-France,0.9304,7,Picardie,0.9248,80 Somme,0.3406,13,Amiens,71.2163,49.6939,2.8189,55.0989,92.6103,11,1,0.9949
+1,1756,Île-de-France,0.6976,9,Île-de-France,0.6976,77 Seine-et-Marne,0.2699,24,Paris,67.5691,48.7077,2.1646,49.8359,83.3002,20,2,0.9858
+2,1660,Nouvelle-Aquitaine,0.9910,4,Poitou-Charentes,0.6663,33 Gironde,0.3060,13,Bordeaux,94.9867,45.5919,-0.1988,69.7169,126.7313,6,1,0.9970
+3,1572,Hauts-de-France,0.9981,3,Nord-Pas-de-Calais,0.9676,62 Pas-de-Calais,0.5579,6,Lille,59.0710,50.4326,2.7323,43.5040,80.4460,7,1,0.9962
+4,1366,Bourgogne-Franche-Comté,0.9854,4,Franche-Comté,0.9685,25 Doubs,0.4078,9,Besançon,56.1805,47.3736,6.2118,43.4014,66.4285,8,1,0.9949
+5,1363,Normandie,0.9963,5,Haute-Normandie,0.8555,76 Seine-Maritime,0.4835,9,Rouen,57.9682,49.3828,0.8533,44.1903,64.6337,12,1,0.9905
+6,1351,Occitanie,0.9993,2,Midi-Pyrénées,0.6684,11 Aude,0.3072,11,Toulouse,66.5545,43.2634,1.7803,51.6531,77.3895,5,1,0.9970
+7,1280,Auvergne-Rhône-Alpes,0.9180,4,Rhône-Alpes,0.8984,38 Isère,0.3844,14,Lyon,72.5169,45.6359,4.8716,56.0398,99.5156,5,1,0.9961
+8,1220,Bretagne,0.9779,5,Bretagne,0.9779,22 Côtes-d'Armor,0.2820,10,Rennes,94.1848,48.2222,-2.7632,71.6174,119.2863,7,1,0.9951
+9,1165,Occitanie,0.9356,2,Midi-Pyrénées,0.9356,65 Hautes-Pyrénées,0.3966,6,Tarbes,56.8518,43.4007,0.3891,42.7116,70.6356,5,1,0.9966
+10,1132,Centre-Val de Loire,0.8984,6,Centre,0.8984,37 Indre-et-Loire,0.2376,17,Blois,90.8801,47.1853,1.4036,70.8547,106.0941,11,1,0.9912
+11,1115,Normandie,0.9220,4,Basse-Normandie,0.9139,50 Manche,0.3928,9,Caen,66.2303,48.9965,-0.7758,47.5349,79.1305,17,1,0.9848
+12,1087,Grand Est,0.6642,6,Champagne-Ardenne,0.6633,10 Aube,0.3901,11,Troyes,70.5024,48.0996,4.4539,53.2579,91.1799,11,1,0.9908
+13,1060,Provence-Alpes-Côte d'Azur,0.8868,9,Provence-Alpes-Côte d'Azur,0.8868,04 Alpes-de-Haute-Provence,0.1868,19,Marseille,92.8806,44.0062,5.9459,70.7724,102.2910,10,1,0.9915
+14,1033,Grand Est,0.9971,2,Alsace,0.8354,67 Bas-Rhin,0.4947,7,Strasbourg,60.2494,48.4050,7.3909,50.1891,85.9325,5,1,0.9961
+15,994,Grand Est,0.8501,6,Champagne-Ardenne,0.7414,51 Marne,0.5825,14,Reims,64.8157,48.9016,4.2936,50.3302,84.3061,18,1,0.9779
+16,938,Grand Est,0.9883,3,Lorraine,0.9584,88 Vosges,0.5267,8,Nancy,46.6087,48.3845,6.2699,35.9021,54.4588,5,1,0.9957
+17,923,Occitanie,0.9502,4,Midi-Pyrénées,0.9198,46 Lot,0.3294,13,Albi,72.9095,44.3210,1.9731,54.6991,88.8176,9,1,0.9902
+18,914,Bourgogne-Franche-Comté,0.9945,4,Bourgogne,0.9737,21 Côte-d'Or,0.5481,10,Dijon,56.0828,47.0533,4.6977,42.2321,67.4066,15,1,0.9836
+19,859,Nouvelle-Aquitaine,0.9651,3,Aquitaine,0.9651,64 Pyrénées-Atlantiques,0.6333,5,Pau,52.5849,43.4867,-0.6816,38.7207,62.6348,3,1,0.9977
+20,856,Auvergne-Rhône-Alpes,0.9252,4,Auvergne,0.9042,63 Puy-de-Dôme,0.5140,10,Clermont-Ferrand,63.5256,45.9236,3.1150,46.6928,79.6298,5,1,0.9953
+21,786,Nouvelle-Aquitaine,0.9898,2,Aquitaine,0.9835,24 Dordogne,0.6285,8,Périgueux,59.8790,44.8427,0.6478,46.0840,71.7539,6,1,0.9924
+22,780,Grand Est,1.0000,1,Lorraine,0.9987,57 Moselle,0.7167,4,Metz,41.6718,49.0869,6.3075,31.4762,48.3796,1,1,1.0000
+23,748,Bourgogne-Franche-Comté,0.5775,2,Rhône-Alpes,0.4225,39 Jura,0.4037,9,Mâcon,53.6228,46.3791,5.4147,40.7270,62.3724,6,1,0.9933
+24,701,Pays de la Loire,0.8103,7,Pays de la Loire,0.8103,72 Sarthe,0.4736,17,Angers,61.3339,48.0318,-0.0115,46.6393,77.2736,17,1,0.9772
+25,681,Pays de la Loire,0.6931,5,Pays de la Loire,0.6931,85 Vendée,0.3510,9,Nantes,76.5388,46.8647,-1.0741,59.6757,95.1419,7,1,0.9912
+26,677,Grand Est,0.9985,2,Lorraine,0.5332,08 Ardennes,0.4564,5,Verdun,52.1306,49.3606,5.1352,39.3411,69.1558,9,1,0.9838
+27,658,Occitanie,0.9802,5,Languedoc-Roussillon,0.9772,30 Gard,0.4818,8,Montpellier,53.3276,43.8415,3.8397,41.8560,69.6439,3,1,0.9970
+28,641,Nouvelle-Aquitaine,0.9875,3,Limousin,0.9813,23 Creuse,0.3760,9,Limoges,65.8856,45.7872,1.7244,50.7913,73.1262,3,1,0.9969
+29,631,Auvergne-Rhône-Alpes,0.7227,3,Auvergne,0.7084,43 Haute-Loire,0.3883,11,Le Puy-en-Velay,65.3791,44.9577,3.2542,50.4081,77.7001,5,1,0.9937
+30,586,Auvergne-Rhône-Alpes,0.9932,3,Rhône-Alpes,0.9915,07 Ardèche,0.5307,7,Valence,51.0848,44.7925,4.7373,38.6735,58.4419,3,1,0.9966
+31,565,Auvergne-Rhône-Alpes,0.9929,4,Rhône-Alpes,0.9929,74 Haute-Savoie,0.4938,7,Chambéry,50.1414,45.8578,6.2141,36.4320,61.2081,5,1,0.9929
+32,528,Bourgogne-Franche-Comté,0.9148,5,Bourgogne,0.9148,89 Yonne,0.4602,8,Auxerre,52.2076,47.4324,3.4997,40.5140,61.7103,10,1,0.9811
+33,356,Centre-Val de Loire,0.9607,3,Centre,0.9607,45 Loiret,0.9101,8,Orléans,43.9627,47.9466,2.3664,33.4118,52.4022,4,1,0.9916
+34,349,Corse,1.0000,1,Corse,1.0000,2B Haute-Corse,0.6676,2,Bastia,46.4661,42.2677,9.1703,33.1535,63.7915,1,1,1.0000
+35,241,Occitanie,0.9959,2,Languedoc-Roussillon,0.9959,66 Pyrénées-Orientales,0.9295,3,Perpignan,32.9192,42.6410,2.5702,23.8101,46.4204,2,1,0.9959
